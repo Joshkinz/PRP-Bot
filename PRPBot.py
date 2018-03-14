@@ -67,6 +67,45 @@ async def _attack(strn, atk, endef):
 	print("Attack confirmed. " + str(critroll))
 	
 @bot.command(name="skill")
+
+#Skill List
+
+#Lunge
+#Cleave
+#Giant Slice
+#Megaton Raid
+#God's Hand
+
+#Double Fangs
+#Myriad Slashes
+
+#Lucky Punch
+#Miracle Punch
+
+#Agi
+#Garu
+#Zio
+#Bufu
+
+#Agilao
+#Garula
+#Zionga
+#Bufula
+
+#Agidyne
+#Garudyne
+#Ziodyne
+#Bufudyne
+
+#Inferno
+#Panta Rhei
+#Thunder Reign
+#Diamond Dust
+
+#Dia
+#Diarama
+#Diarahan
+
 async def _skill(name, strn, atk, endef):
 	global message
 	global message2
@@ -551,11 +590,780 @@ async def _skill(name, strn, atk, endef):
 			statusmessage = "Burn applied! Target takes 2% HP damage per turn for 4 turns."
 			
 		#Tell bot to post damage.
-		await bot.say(message + str(int(damage)) +".\nDeduct 35% HP." +" " + statusmessage)
+		await bot.say(message + str(int(damage)) +".\nDeduct 4 SP." +" " + statusmessage)
 		message = "Total damage: "
 		statusmessage = ""
 		
 		#Print a confirmation message in the console.
 		print("Agi confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "agilao":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.9
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Burn applied! Target takes 2% HP damage per turn for 4 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 8 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Agilao confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "agidyne":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 2.6
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Burn applied! Target takes 2% HP damage per turn for 4 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 12 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Agidyne confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "inferno":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 7)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 4.0
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Burn applied! Target takes 2% HP damage per turn for 4 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 40 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Inferno confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "garu":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.4
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Dizzy applied! Target deals only 60% damage per turn for 2 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 4 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Garu confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "garula":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.9
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Dizzy applied! Target deals only 60% damage per turn for 2 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 8 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Garula confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "garudyne":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 2.6
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Dizzy applied! Target deals only 60% damage per turn for 2 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 12 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Garudyne confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "pantarhei":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 7)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 4.0
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Dizzy applied! Target deals only 60% damage per turn for 2 turns."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 40 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Panta Rhei confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "zio":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.4
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Shock applied! Target can not move for 3 turns, but all who touch the target suffer while Shocked take 100 HP damage."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 4 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Zio confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "zionga":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.9
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Shock applied! Target can not move for 3 turns, but all who touch the target suffer while Shocked take 100 HP damage."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 8 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Zionga confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "ziodyne":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 2.6
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Shock applied! Target can not move for 3 turns, but all who touch the target suffer while Shocked take 100 HP damage."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 12 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Ziodyne confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "thunderreign":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 7)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 4.0
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Shock applied! Target can not move for 3 turns, but all who touch the target suffer while Shocked take 100 HP damage."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 40 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Thunder Reign confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "bufu":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.4
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Freeze applied! Target can not move during its next turn."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 4 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Bufu confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "bufula":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 1.9
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Freeze applied! Target can not move during its next turn."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 8 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Bufula confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "bufudyne":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 11)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 2.6
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Freeze applied! Target can not move during its next turn."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 12 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Bufudyne confirmed. " + str(critroll) + " " + str(statusroll))
+		
+	if name == "diamonddust":
+		#Roll for random modifiers.
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(1, 30)
+		statusroll = random.randrange(1, 7)
+		
+		#Damage formula.
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * 4.0
+		
+		#Change the damage to an integer.
+		damage = int(damage)
+		
+		#Set minimum and maximum damage.
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+			
+		#Check for critical hit.
+		if critroll == 1:
+			#Change 'message' to reference the critical hit.
+			message = "Critical hit! Total damage: "
+			
+			#Set critical modifier.
+			damagemod = (sqrt(strn) / 3.5)
+			
+			#Set minimum and maximum critical modifier.
+			if damagemod < 1:
+				damagemod = 1
+			if damagemod > 3:
+				damagemod = 3
+				
+			#Apply critical modifier.
+			damage = damage * damagemod
+		
+		#Check for status effect.
+		if statusroll == 1:
+			#Change 'message2' to reference the effect.
+			statusmessage = "Freeze applied! Target can not move during its next turn."
+			
+		#Tell bot to post damage.
+		await bot.say(message + str(int(damage)) +".\nDeduct 40 SP." +" " + statusmessage)
+		message = "Total damage: "
+		statusmessage = ""
+		
+		#Print a confirmation message in the console.
+		print("Diamond Dust confirmed. " + str(critroll) + " " + str(statusroll))
+		
+@bot.command(name="heal")
+
+#Skill List
+
+#Dia
+#Diarama
+#Diarahan
+
+async def _heal(name, maxhp):
+#I got too lazy to comment for a bit.
+	name = str(name)
+	maxhp = int(maxhp)
+	if name == "dia":
+		bonus = (maxhp / 4)
+		hpgiven = bonus + 75
+		hpgiven = int(hpgiven)
+		if hpgiven > maxhp:
+			hpgiven = maxhp
+		await bot.say("Restored " + str(hpgiven) + " HP!")
+		print("Dia confirmed.")
+		
+	if name == "diarama":
+		bonus = (maxhp / 2)
+		hpgiven = bonus + 150
+		hpgiven = int(hpgiven)
+		if hpgiven > maxhp:
+			hpgiven = maxhp
+		await bot.say("Restored " + str(hpgiven) + " HP!")
+		print("Diarama confirmed.")
+		
+	if name == "diarahan":
+		await bot.say("Restored " + str(maxhp) + " HP!")
+		print("Diarahan confirmed.")
 
 bot.run('-snip-')
