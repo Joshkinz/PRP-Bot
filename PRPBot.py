@@ -291,5 +291,62 @@ async def _heal(name, maxhp):
 	await bot.say("Restored " + str(hpgiven) + " HP!" +"\nDeduct 4 SP." +"\nParty gauge: " + str(int(partyGauge)) + "%!")
 	
 	print("%s confirmed." % skills[str(name)]['name'])
+	
+@bot.command(name="partygauge")
+async def _partygauge(name):
+	global partyGauge
+	if name.lower() == "check":
+		await bot.say("Party gauge: " + str(int(partyGauge)) + "%!")
+		
+		print("PG Check confirmed.")
+	
+	if name.lower() == "teamwork":
+	
+		if int(partyGauge) < 33:
+			await bot.say("Not enough charge!\nParty gauge: " + str(int(partyGauge)) + "%!")
+			
+			print("Teamwork attack failed.")
+		
+		if int(partyGauge) > 32:
+			partyGauge = int(partyGauge - 33)
+			if int(partyGauge) < 0:
+				partyGauge = 1
+				
+			await bot.say("Teamwork attack initiated!\nParty gauge: " + str(int(partyGauge)) + "%!")
+			
+			print("Teamwork Attack confirmed.")
+			
+	if name.lower() == "chain":
+		if int(partyGauge) > 99:
+			partyGauge = int(partyGauge - 100)
+			if int(partyGauge) < 0:
+				partyGauge = 1
+			await bot.say("Chain attack initiated!\nParty gauge: " + str(int(partyGauge)) + "%!")
+			print("Chain Attack confirmed.")
+			
+		if int(partyGauge) < 100:
+			await bot.say("Not enough charge!\nParty gauge: " + str(int(partyGauge)) + "%!")
+			print("Chain attack failed.")
+					
+@bot.command(name="gauge")
+async def _gauge(name, number):
+	global partyGauge
+	if name.lower() == "increase":
+		partyGauge = partyGauge + int(number)
+		if int(partyGauge) < 0:
+			partyGauge = 1
+		if int(partyGauge) > 100:
+				partyGauge = 100
+		await bot.say("Party gauge: " + str(partyGauge) + "%!")
+		print("Party gauge increased by " + str(number) + "%")
+		
+	if name.lower() == "decrease":
+		partyGauge = partyGauge - int(number)
+		if int(partyGauge) < 0:
+			partyGauge = 1
+		if int(partyGauge) > 100:
+				partyGauge = 100
+		await bot.say("Party gauge: " + str(partyGauge) + "%!")
+		print("Party gauge decreased by " + str(number) + "%")
 
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
