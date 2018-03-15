@@ -162,5 +162,68 @@
     "status2": 10,
     "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
     "name": "Agidyne"
+  },
+  "garudyne": {
+    "strength": 2.6,
+    "cost": 12,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Dizzy applied! Target deals only 60% damage per turn for 2 turns.",
+    "name": "Garudyne"
+  },
+  "ziodyne": {
+    "strength": 2.6,
+    "cost": 12,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Shock applied! Target can not move for 3 turns, but all who touch the target while it is Shocked suffer 100 HP damage.",
+    "name": "Ziodyne"
+  },
+  "bufudyne": {
+    "strength": 2.6,
+    "cost": 12,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Freeze applied! Target can not move during its next turn.",
+    "name": "Bufudyne"
+  },
+  "inferno": {
+    "strength": 4.1,
+    "cost": 40,
+    "crit": 20,
+    "status1": 1,
+    "status2": 8,
+    "status": "Burn applied! Target takes 4% HP damage per turn for 4 turns.",
+    "name": "Inferno"
+  },
+  "pantarhei": {
+    "strength": 4.1,
+    "cost": 40,
+    "crit": 20,
+    "status1": 1,
+    "status2": 8,
+    "status": "Dizzy applied! Target deals only 40% damage per turn for 2 turns.",
+    "name": "Panta Rhei"
+  },
+  "thunderreign": {
+    "strength": 4.1,
+    "cost": 40,
+    "crit": 20,
+    "status1": 1,
+    "status2": 8,
+    "status": "Shock applied! Target can not move for 4 turns, but all who touch the target while it is Shocked suffer 90 HP damage.",
+    "name": "Thunder Reign"
+  },
+  "diamonddust": {
+    "strength": 4.1,
+    "cost": 40,
+    "crit": 20,
+    "status1": 1,
+    "status2": 8,
+    "status": "Freeze applied! Target can not move for 2 turns.",
+    "name": "Diamond Dust"
   }
 }
