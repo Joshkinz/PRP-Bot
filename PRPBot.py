@@ -208,7 +208,7 @@ async def _skill(name, strn, atk, endef):
 		statusmessage = skills[str(name)]['status']
 	
 	if skills[str(name)]['hits'] == 2:
-		await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + message + str(int(damage1 + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+		await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
 	else:
 		await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
 	message = "Total damage: "
