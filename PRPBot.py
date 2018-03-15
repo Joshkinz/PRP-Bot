@@ -317,16 +317,16 @@ async def _partygauge(name):
 			print("Teamwork Attack confirmed.")
 			
 	if name.lower() == "chain":
+		if int(partyGauge) < 100:
+			await bot.say("Not enough charge!\nParty gauge: " + str(int(partyGauge)) + "%!")
+			print("Chain attack failed.")
+			
 		if int(partyGauge) > 99:
 			partyGauge = int(partyGauge - 100)
 			if int(partyGauge) < 0:
 				partyGauge = 1
 			await bot.say("Chain attack initiated!\nParty gauge: " + str(int(partyGauge)) + "%!")
 			print("Chain Attack confirmed.")
-			
-		if int(partyGauge) < 100:
-			await bot.say("Not enough charge!\nParty gauge: " + str(int(partyGauge)) + "%!")
-			print("Chain attack failed.")
 					
 @bot.command(name="gauge")
 async def _gauge(name, number):
