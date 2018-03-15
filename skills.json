@@ -1,0 +1,49 @@
+{
+  "lunge": {
+    "strength":1.3,
+    "hits":1,
+    "hpcost":"6%",
+    "crit":25,
+    "name":"Lunge"
+  },
+  
+  "cleave": {
+    "strength":1.3,
+    "hits":1,
+    "hpcost":"10%",
+    "crit":19,
+    "name":"Cleave"
+  },
+  
+  "giantslice": {
+    "strength":2.3,
+    "hits":1,
+    "hpcost":"18%",
+    "crit":25,
+    "name":"Giant Slice"
+  },
+  
+  "megatonraid": {
+    "strength":2.8,
+    "hits":1,
+    "hpcost":"26%",
+    "crit":25,
+    "name":"Megaton Raid"
+  },
+  
+  "godshand": {
+    "strength":4.3,
+    "hits":1,
+    "hpcost":"44%",
+    "crit":25,
+    "name":"God's Hand"
+  },
+  
+  "doublefangs": {
+    "strength":1.5,
+    "hits":2,
+    "hpcost":"17%",
+    "crit":25,
+    "name":"Double Fangs"
+  }
+}
