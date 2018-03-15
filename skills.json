@@ -225,5 +225,105 @@
     "status2": 8,
     "status": "Freeze applied! Target can not move for 2 turns.",
     "name": "Diamond Dust"
+  },
+  "tarukaja": {
+    "message": "Target's Strength x1.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
+    "gauge": 4,
+    "name": "Tarukaja"
+  },
+  "rakukaja": {
+    "message": "Target's Defense x1.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
+    "gauge": 4,
+    "name": "Rakukaja"
+  },
+  "heatriser": {
+    "message": "Target's Strength and Defense x1.5 for 2 turns.\nDeduct 30 SP.\nParty gauge: ",
+    "gauge": 8,
+    "name": "Heat Riser"
+  },
+  "tarunda": {
+    "message": "Target's Strength x0.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
+    "gauge": 2,
+    "name": "Tarunda"
+  },
+  "rakunda": {
+    "message": "Target's Defense x0.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
+    "gauge": 2,
+    "name": "Rakunda"
+  },
+  "charge": {
+    "message": "Target's next **physical** attack x2.5.\nDeduct 15 SP.\nParty gauge: ",
+    "gauge": 5,
+    "name": "Charge"
+  },
+  "concentrate": {
+    "message": "Target's next **magic** attack x2.5.\nDeduct 15 SP.\nParty gauge: ",
+    "gauge": 5,
+    "name": "Concentrate"
+  },
+  "wall": {
+    "message": "Target's innate elemental weaknesses are negated for 3 turns.\nDeduct 24 SP.\nParty gauge: ",
+    "gauge": 6,
+    "name": "Wall"
+  },
+  "tetrakarn": {
+    "message": "Target repels next **physical** attack.\nDeduct 36 SP.\nParty gauge: ",
+    "gauge": 6,
+    "name": "Tetrakarn"
+  },
+  "makarakarn": {
+    "message": "Target repels next **magic** attack.\nDeduct 36 SP.\nParty gauge: ",
+    "gauge": 6,
+    "name": "Makarakarn"
+  },
+  "dia": {
+    "bonus1": 4,
+    "bonus2": 30,
+    "gauge": 3,
+    "name": "Dia"
+  },
+  "diarama": {
+    "bonus1": 2,
+    "bonus2": 75,
+    "gauge": 4,
+    "name": "Diarama"
+  },
+  "diarahan": {
+    "bonus1": 1,
+    "bonus2": 0,
+    "gauge": 5,
+    "name": "Diarahan"
+  },
+  "recarm": {
+    "bonus": 2,
+    "gauge": 6,
+    "name": "Recarm"
+  },
+  "samarecarm": {
+    "bonus": 1,
+    "gauge": 8,
+    "name": "Samarecarm"
+  },
+  "amritadrop": {
+    "gauge": 5,
+    "message": "Target cured of all ailments!\nDeduct 6SP.\nParty gauge: ",
+    "name": "Amrita Drop"
+  },
+  "amritashower": {
+    "gauge": 10,
+    "message": "Party cured of all ailments!\nDeduct 15SP.\nParty gauge: ",
+    "name": "Amrita Shower"
+  },
+  "confuse": {
+    "gauge": 1,
+    "message1": "Target successfully confused! It is unable to choose a target for 3 turns.\nDeduct 5 SP.\nParty gauge: ",
+    "message2": "Confuse missed!",
+    "name": "Confuse"
+  },
+  "dormina": {
+    "gauge": 1,
+    "message1": "Target is asleep! It is unable to act for 2 turns.\nDeduct 5 SP.\nParty gauge: ",
+    "message2": "Dormina missed!",
+    "name": "Dormina"
   }
 }
