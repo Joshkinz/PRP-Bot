@@ -1,49 +1,166 @@
 {
   "lunge": {
-    "strength":1.3,
-    "hits":1,
-    "hpcost":"6%",
-    "crit":25,
-    "name":"Lunge"
+    "strength": 1.3,
+    "cost": "6%",
+    "crit": 25,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Lunge"
   },
-  
   "cleave": {
-    "strength":1.3,
-    "hits":1,
-    "hpcost":"10%",
-    "crit":19,
-    "name":"Cleave"
+    "strength": 1.3,
+    "cost": "10%",
+    "crit": 19,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Cleave"
   },
-  
   "giantslice": {
-    "strength":2.3,
-    "hits":1,
-    "hpcost":"18%",
-    "crit":25,
-    "name":"Giant Slice"
+    "strength": 2.3,
+    "cost": "18%",
+    "crit": 25,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Giant Slice"
   },
-  
   "megatonraid": {
-    "strength":2.8,
-    "hits":1,
-    "hpcost":"26%",
-    "crit":25,
-    "name":"Megaton Raid"
+    "strength": 2.8,
+    "cost": "26%",
+    "crit": 25,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Megaton Raid"
   },
-  
   "godshand": {
-    "strength":4.3,
-    "hits":1,
-    "hpcost":"44%",
-    "crit":25,
-    "name":"God's Hand"
+    "strength": 4.3,
+    "cost": "44%",
+    "crit": 25,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "God's Hand"
   },
-  
   "doublefangs": {
-    "strength":1.5,
-    "hits":2,
-    "hpcost":"17%",
-    "crit":25,
-    "name":"Double Fangs"
+    "strength": 1.5,
+    "hits": 2,
+    "cost": "17%",
+    "crit": 25,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Double Fangs"
+  },
+  "myriadslashes": {
+    "strength": 1.4,
+    "hits": 2,
+    "cost": "22%",
+    "crit": 17,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Myriad Slashes"
+  },
+  "luckypunch": {
+    "strength": 1,
+    "cost": "20%",
+    "crit": 5,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Lucky Punch"
+  },
+  "miraclepunch": {
+    "strength": 1.4,
+    "cost": "35%",
+    "crit": 3,
+    "status1": 2,
+    "status2": 10,
+    "status": "",
+    "name": "Miracle Punch"
+  },
+  "agi": {
+    "strength": 1.4,
+    "cost": 4,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
+    "name": "Agi"
+  },
+  "garu": {
+    "strength": 1.4,
+    "cost": 4,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Dizzy applied! Target deals only 60% damage per turn for 2 turns.",
+    "name": "Garu"
+  },
+  "zio": {
+    "strength": 1.4,
+    "cost": 4,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Shock applied! Target can not move for 3 turns, but all who touch the target while it is Shocked suffer 100 HP damage.",
+    "name": "Zio"
+  },
+  "bufu": {
+    "strength": 1.4,
+    "cost": 4,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Freeze applied! Target can not move during its next turn.",
+    "name": "Bufu"
+  },
+  "agilao": {
+    "strength": 1.9,
+    "cost": 8,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
+    "name": "Agilao"
+  },
+  "garula": {
+    "strength": 1.9,
+    "cost": 8,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Dizzy applied! Target deals only 60% damage per turn for 2 turns.",
+    "name": "Garula"
+  },
+  "zionga": {
+    "strength": 1.9,
+    "cost": 8,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Shock applied! Target can not move for 3 turns, but all who touch the target while it is Shocked suffer 100 HP damage.",
+    "name": "Zionga"
+  },
+  "bufula": {
+    "strength": 1.9,
+    "cost": 8,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Freeze applied! Target can not move during its next turn.",
+    "name": "Bufula"
+  },
+  "agidyne": {
+    "strength": 2.6,
+    "cost": 12,
+    "crit": 30,
+    "status1": 1,
+    "status2": 10,
+    "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
+    "name": "Agidyne"
   }
 }
