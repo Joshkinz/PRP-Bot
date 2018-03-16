@@ -353,4 +353,4 @@ async def _gauge(ctx, name, number):
 		await bot.say("This command is only usable by administrators.")
 		print("Invalid gauge command by " + ctx.message.author.name)
 
-bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
+bot.run('-snip-')
