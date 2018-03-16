@@ -135,7 +135,7 @@ async def _skill(name, strn=1, atk=1, endef=1):
 	global statusmessage
 	global partyGauge
 		
-	if skills[str(name)]['type'] = "attack":
+	if skills[str(name)]['type'] == "attack":
 		if int(strn) < 1:
 			strn = 1
 		if int(strn) > 99:
@@ -158,12 +158,14 @@ async def _skill(name, strn=1, atk=1, endef=1):
 	
 		roll = random.uniform(.94, 1.06)
 		roll = float(roll)
+		roll2 = random.uniform(.94, 1.06)
+		roll2 = float(roll2)
 		critroll = random.randrange(0, skills[str(name)]['crit'])
 		critroll2 = random.randrange(0, skills[str(name)]['crit'])
 		statusroll = random.randrange(skills[str(name)]['status1'], skills[str(name)]['status2'])
 		
 		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * int(skills[str(name)]['strength'])
-		damage2 = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * int(skills[str(name)]['strength'])
+		damage2 = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll2 * int(skills[str(name)]['strength'])
 		
 		damage = int(damage)
 		damage2 = int(damage2)
@@ -209,7 +211,7 @@ async def _skill(name, strn=1, atk=1, endef=1):
 			statusmessage = skills[str(name)]['status']
 		
 		if skills[str(name)]['hits'] == 2:
-			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + "\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + ".\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
 		else:
 			await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
 		message = "Total damage: "
@@ -233,28 +235,34 @@ async def _skill(name, strn=1, atk=1, endef=1):
 		print(skills[str(name)]['name'] + " confirmed. " + str(statusroll))
 		
 	if skills[str(name)]['type'] == 'heal':
-	if int(strn) > 999:
-		strn = 999
-	if int(strn) < 1:
-		strn = 1
-	maxhp = int(strn)
-	
-	bonus = (maxhp / skills[str(name)]['bonus1'])
-	
-	hpgiven = bonus + skills[str(name)]['bonus2']
-	hpgiven = int(hpgiven)
-	
-	if hpgiven > maxhp:
-		hpgiven = maxhp
+		if int(strn) > 999:
+			strn = 999
+		if int(strn) < 1:
+			strn = 1
+		maxhp = int(strn)
 		
-	partyGauge = partyGauge + (hpgiven / 110) + 3
-	if int(partyGauge) > 100:
-		partyGauge = 100
-	
-	await bot.say("Restored " + str(hpgiven) + " HP!" +"\nDeduct 4 SP." +"\nParty gauge: " + str(int(partyGauge)) + "%!")
-	
-	print("%s confirmed." % skills[str(name)]['name'])
-	
+		bonus = (maxhp / skills[str(name)]['bonus1'])
+		
+		hpgiven = bonus + skills[str(name)]['bonus2']
+		hpgiven = int(hpgiven)
+		
+		if hpgiven > maxhp:
+			hpgiven = maxhp
+			
+		partyGauge = partyGauge + (hpgiven / 110) + 3
+		if int(partyGauge) > 100:
+			partyGauge = 100
+		
+		await bot.say("Restored " + str(hpgiven) + " HP!" +"\nDeduct 4 SP." +"\nParty gauge: " + str(int(partyGauge)) + "%!")
+		
+		print("%s confirmed." % skills[str(name)]['name'])
+		
+	if skills[str(name)]['type'] == 'revive':
+		hpgiven = strn / skills[str(name)]['bonus']
+		partyGauge = partyGauge + skills[str(name)]['gauge']
+		await bot.say("Restored " + str(int(hpgiven)) + " HP!\nParty gauge: " + str(partyGauge) + "%!")
+		print(skills[str(name)]['name'] + " confirmed.")
+		
 @bot.command(name="party")
 async def _partygauge(name):
 	global partyGauge
@@ -316,4 +324,4 @@ async def _gauge(ctx, name, number):
 		await bot.say("This command is only usable by administrators.")
 		print("Invalid gauge command by " + ctx.message.author.name)
 
-bot.run('-snip-')
+bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
