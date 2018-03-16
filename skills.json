@@ -6,7 +6,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Lunge"
+    "name": "Lunge",
+    "type": "attack"
   },
   "cleave": {
     "strength": 1.3,
@@ -15,7 +16,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Cleave"
+    "name": "Cleave",
+    "type": "attack"
   },
   "giantslice": {
     "strength": 2.3,
@@ -24,7 +26,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Giant Slice"
+    "name": "Giant Slice",
+    "type": "attack"
   },
   "megatonraid": {
     "strength": 2.8,
@@ -33,7 +36,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Megaton Raid"
+    "name": "Megaton Raid",
+    "type": "attack"
   },
   "godshand": {
     "strength": 4.3,
@@ -42,7 +46,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "God's Hand"
+    "name": "God's Hand",
+    "type": "attack"
   },
   "doublefangs": {
     "strength": 1.5,
@@ -52,7 +57,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Double Fangs"
+    "name": "Double Fangs",
+    "type": "attack"
   },
   "myriadslashes": {
     "strength": 1.4,
@@ -62,7 +68,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Myriad Slashes"
+    "name": "Myriad Slashes",
+    "type": "attack"
   },
   "luckypunch": {
     "strength": 1,
@@ -71,7 +78,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Lucky Punch"
+    "name": "Lucky Punch",
+    "type": "attack"
   },
   "miraclepunch": {
     "strength": 1.4,
@@ -80,7 +88,8 @@
     "status1": 2,
     "status2": 10,
     "status": "",
-    "name": "Miracle Punch"
+    "name": "Miracle Punch",
+    "type": "attack"
   },
   "agi": {
     "strength": 1.4,
@@ -89,7 +98,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
-    "name": "Agi"
+    "name": "Agi",
+    "type": "attack"
   },
   "garu": {
     "strength": 1.4,
@@ -98,7 +108,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Dizzy applied! Target deals only 60% damage per turn for 2 turns.",
-    "name": "Garu"
+    "name": "Garu",
+    "type": "attack"
   },
   "zio": {
     "strength": 1.4,
@@ -107,7 +118,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Shock applied! Target can not move for 3 turns, but all who touch the target while it is Shocked suffer 100 HP damage.",
-    "name": "Zio"
+    "name": "Zio",
+    "type": "attack"
   },
   "bufu": {
     "strength": 1.4,
@@ -116,7 +128,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Freeze applied! Target can not move during its next turn.",
-    "name": "Bufu"
+    "name": "Bufu",
+    "type": "attack"
   },
   "agilao": {
     "strength": 1.9,
@@ -125,7 +138,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
-    "name": "Agilao"
+    "name": "Agilao",
+    "type": "attack"
   },
   "garula": {
     "strength": 1.9,
@@ -134,7 +148,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Dizzy applied! Target deals only 60% damage per turn for 2 turns.",
-    "name": "Garula"
+    "name": "Garula",
+    "type": "attack"
   },
   "zionga": {
     "strength": 1.9,
@@ -143,7 +158,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Shock applied! Target can not move for 3 turns, but all who touch the target while it is Shocked suffer 100 HP damage.",
-    "name": "Zionga"
+    "name": "Zionga",
+    "type": "attack"
   },
   "bufula": {
     "strength": 1.9,
@@ -152,7 +168,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Freeze applied! Target can not move during its next turn.",
-    "name": "Bufula"
+    "name": "Bufula",
+    "type": "attack"
   },
   "agidyne": {
     "strength": 2.6,
@@ -161,7 +178,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Burn applied! Target takes 2% HP damage per turn for 4 turns.",
-    "name": "Agidyne"
+    "name": "Agidyne",
+    "type": "attack"
   },
   "garudyne": {
     "strength": 2.6,
@@ -170,7 +188,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Dizzy applied! Target deals only 60% damage per turn for 2 turns.",
-    "name": "Garudyne"
+    "name": "Garudyne",
+    "type": "attack"
   },
   "ziodyne": {
     "strength": 2.6,
@@ -179,7 +198,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Shock applied! Target can not move for 3 turns, but all who touch the target while it is Shocked suffer 100 HP damage.",
-    "name": "Ziodyne"
+    "name": "Ziodyne",
+    "type": "attack"
   },
   "bufudyne": {
     "strength": 2.6,
@@ -188,7 +208,8 @@
     "status1": 1,
     "status2": 10,
     "status": "Freeze applied! Target can not move during its next turn.",
-    "name": "Bufudyne"
+    "name": "Bufudyne",
+    "type": "attack"
   },
   "inferno": {
     "strength": 4.1,
@@ -197,7 +218,8 @@
     "status1": 1,
     "status2": 8,
     "status": "Burn applied! Target takes 4% HP damage per turn for 4 turns.",
-    "name": "Inferno"
+    "name": "Inferno",
+    "type": "attack"
   },
   "pantarhei": {
     "strength": 4.1,
@@ -206,7 +228,8 @@
     "status1": 1,
     "status2": 8,
     "status": "Dizzy applied! Target deals only 40% damage per turn for 2 turns.",
-    "name": "Panta Rhei"
+    "name": "Panta Rhei",
+    "type": "attack"
   },
   "thunderreign": {
     "strength": 4.1,
@@ -215,7 +238,8 @@
     "status1": 1,
     "status2": 8,
     "status": "Shock applied! Target can not move for 4 turns, but all who touch the target while it is Shocked suffer 90 HP damage.",
-    "name": "Thunder Reign"
+    "name": "Thunder Reign",
+    "type": "attack"
   },
   "diamonddust": {
     "strength": 4.1,
@@ -224,106 +248,126 @@
     "status1": 1,
     "status2": 8,
     "status": "Freeze applied! Target can not move for 2 turns.",
-    "name": "Diamond Dust"
+    "name": "Diamond Dust",
+    "type": "attack"
   },
   "tarukaja": {
     "message": "Target's Strength x1.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
     "gauge": 4,
-    "name": "Tarukaja"
+    "name": "Tarukaja",
+    "type": "buff"
   },
   "rakukaja": {
     "message": "Target's Defense x1.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
     "gauge": 4,
-    "name": "Rakukaja"
+    "name": "Rakukaja",
+    "type": "buff"
   },
   "heatriser": {
     "message": "Target's Strength and Defense x1.5 for 2 turns.\nDeduct 30 SP.\nParty gauge: ",
     "gauge": 8,
-    "name": "Heat Riser"
+    "name": "Heat Riser",
+    "type": "buff"
   },
   "tarunda": {
     "message": "Target's Strength x0.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
     "gauge": 2,
-    "name": "Tarunda"
+    "name": "Tarunda",
+    "type": "buff"
   },
   "rakunda": {
     "message": "Target's Defense x0.5 for 3 turns.\nDeduct 8 SP.\nParty gauge: ",
     "gauge": 2,
-    "name": "Rakunda"
+    "name": "Rakunda",
+    "type": "buff"
   },
   "charge": {
     "message": "Target's next **physical** attack x2.5.\nDeduct 15 SP.\nParty gauge: ",
     "gauge": 5,
-    "name": "Charge"
+    "name": "Charge",
+    "type": "buff"
   },
   "concentrate": {
     "message": "Target's next **magic** attack x2.5.\nDeduct 15 SP.\nParty gauge: ",
     "gauge": 5,
-    "name": "Concentrate"
+    "name": "Concentrate",
+    "type": "buff"
   },
   "wall": {
     "message": "Target's innate elemental weaknesses are negated for 3 turns.\nDeduct 24 SP.\nParty gauge: ",
     "gauge": 6,
-    "name": "Wall"
+    "name": "Wall",
+    "type": "buff"
   },
   "tetrakarn": {
     "message": "Target repels next **physical** attack.\nDeduct 36 SP.\nParty gauge: ",
     "gauge": 6,
-    "name": "Tetrakarn"
+    "name": "Tetrakarn",
+    "type": "buff"
   },
   "makarakarn": {
     "message": "Target repels next **magic** attack.\nDeduct 36 SP.\nParty gauge: ",
     "gauge": 6,
-    "name": "Makarakarn"
+    "name": "Makarakarn",
+    "type": "buff"
   },
   "dia": {
     "bonus1": 4,
     "bonus2": 30,
     "gauge": 3,
-    "name": "Dia"
+    "name": "Dia",
+    "type": "heal"
   },
   "diarama": {
     "bonus1": 2,
     "bonus2": 75,
     "gauge": 4,
-    "name": "Diarama"
+    "name": "Diarama",
+    "type": "heal"
   },
   "diarahan": {
     "bonus1": 1,
     "bonus2": 0,
     "gauge": 5,
-    "name": "Diarahan"
+    "name": "Diarahan",
+    "type": "heal"
   },
   "recarm": {
     "bonus": 2,
     "gauge": 6,
-    "name": "Recarm"
+    "name": "Recarm",
+    "type": "revive"
   },
   "samarecarm": {
     "bonus": 1,
     "gauge": 8,
-    "name": "Samarecarm"
+    "name": "Samarecarm",
+    "type": "revive"
   },
   "amritadrop": {
     "gauge": 5,
     "message": "Target cured of all ailments!\nDeduct 6SP.\nParty gauge: ",
-    "name": "Amrita Drop"
+    "name": "Amrita Drop",
+    "type": "buff"
   },
   "amritashower": {
     "gauge": 10,
     "message": "Party cured of all ailments!\nDeduct 15SP.\nParty gauge: ",
-    "name": "Amrita Shower"
+    "name": "Amrita Shower",
+    "type": "buff"
   },
   "confuse": {
     "gauge": 1,
     "message1": "Target successfully confused! It is unable to choose a target for 3 turns.\nDeduct 5 SP.\nParty gauge: ",
     "message2": "Confuse missed!",
-    "name": "Confuse"
+    "name": "Confuse",
+    "type": "effect"
   },
   "dormina": {
     "gauge": 1,
     "message1": "Target is asleep! It is unable to act for 2 turns.\nDeduct 5 SP.\nParty gauge: ",
     "message2": "Dormina missed!",
-    "name": "Dormina"
+    "name": "Dormina",
+    "type": "effect"
   }
 }
