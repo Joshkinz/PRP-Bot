@@ -129,137 +129,108 @@ async def _attack(strn, atk, endef):
 #Thunder Reign
 #Diamond Dust
 
-async def _skill(name, strn, atk, endef):
+async def _skill(name, strn=1, atk=1, endef=1):
 	global message
 	global message2
 	global statusmessage
 	global partyGauge
 		
-	if int(strn) < 1:
-		strn = 1
-	if int(strn) > 99:
-		strn = 99
-		
-	if int(atk) < 1:
-		atk = 1
-	if int(atk) > 999:
-		atk = 999
-	
-	if int(endef) < 1:
-		endef = 1
-	if int(endef) > 99:
-		endef = 99
-		
-	name = str(name)
-	strn = float(strn)
-	atk = float(atk)
-	endef = float(endef)
-
-	roll = random.uniform(.94, 1.06)
-	roll = float(roll)
-	critroll = random.randrange(0, skills[str(name)]['crit'])
-	critroll2 = random.randrange(0, skills[str(name)]['crit'])
-	statusroll = random.randrange(skills[str(name)]['status1'], skills[str(name)]['status2'])
-	
-	damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * int(skills[str(name)]['strength'])
-	damage2 = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * int(skills[str(name)]['strength'])
-	
-	damage = int(damage)
-	damage2 = int(damage2)
-	
-	if damage < 0:
-		damage = 0
-	if damage > 5000:
-		damage = 5000
-	if damage2 < 0:
-		damage2 = 0
-	if damage2 > 5000:
-		damage2 = 5000
-		
-	if critroll == 1:
-		message = "Critical hit! Total damage: "
-		
-		damagemod = (sqrt(strn) / 3.5)
+	if skills[str(name)]['type'] = "attack":
+		if int(strn) < 1:
+			strn = 1
+		if int(strn) > 99:
+			strn = 99
 			
-		if damagemod < 1.5:
-			damagemod = 1.5
-		if damagemod > 3:
-			damagemod = 3
-				
-		damage = damage * damagemod
+		if int(atk) < 1:
+			atk = 1
+		if int(atk) > 999:
+			atk = 999
 		
-	if critroll2 == 1:
-		message2 = "Critical hit! Total damage: "
-		
-		damagemod = (sqrt(strn) / 3.5)
+		if int(endef) < 1:
+			endef = 1
+		if int(endef) > 99:
+			endef = 99
 			
-		if damagemod < 1.5:
-			damagemod = 1.5
-		if damagemod > 3:
-			damagemod = 3
+		name = str(name)
+		strn = float(strn)
+		atk = float(atk)
+		endef = float(endef)
+	
+		roll = random.uniform(.94, 1.06)
+		roll = float(roll)
+		critroll = random.randrange(0, skills[str(name)]['crit'])
+		critroll2 = random.randrange(0, skills[str(name)]['crit'])
+		statusroll = random.randrange(skills[str(name)]['status1'], skills[str(name)]['status2'])
+		
+		damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * int(skills[str(name)]['strength'])
+		damage2 = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll * int(skills[str(name)]['strength'])
+		
+		damage = int(damage)
+		damage2 = int(damage2)
+		
+		if damage < 0:
+			damage = 0
+		if damage > 5000:
+			damage = 5000
+		if damage2 < 0:
+			damage2 = 0
+		if damage2 > 5000:
+			damage2 = 5000
+			
+		if critroll == 1:
+			message = "Critical hit! Total damage: "
+			
+			damagemod = (sqrt(strn) / 3.5)
 				
-		damage2 = damage2 * damagemod
+			if damagemod < 1.5:
+				damagemod = 1.5
+			if damagemod > 3:
+				damagemod = 3
+					
+			damage = damage * damagemod
+			
+		if critroll2 == 1:
+			message2 = "Critical hit! Total damage: "
+			
+			damagemod = (sqrt(strn) / 3.5)
+				
+			if damagemod < 1.5:
+				damagemod = 1.5
+			if damagemod > 3:
+				damagemod = 3
+					
+			damage2 = damage2 * damagemod
+			
+		partyGauge = partyGauge + (sqrt(damage) / sqrt(endef))
+		if partyGauge > 100:
+			partyGauge = 100
+			
+		if statusroll == 1:
+			statusmessage = skills[str(name)]['status']
 		
-	partyGauge = partyGauge + (sqrt(damage) / sqrt(endef))
-	if partyGauge > 100:
-		partyGauge = 100
+		if skills[str(name)]['hits'] == 2:
+			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + "\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+		else:
+			await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+		message = "Total damage: "
+		message2 = "Total damage: "
+		statusmessage = ""
+			
+		print(str(skills[str(name)]['name']) + " confirmed! " + str(critroll) + " " + str(statusroll))
 		
-	if statusroll == 1:
-		statusmessage = skills[str(name)]['status']
-	
-	if skills[str(name)]['hits'] == 2:
-		await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + "\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
-	else:
-		await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
-	message = "Total damage: "
-	message2 = "Total damage: "
-	statusmessage = ""
+	if skills[str(name)]['type'] == 'buff':
+		partyGauge = int(partyGauge) + skills[str(name)]['gauge']
+		await bot.say(skills[str(name)]['message'] + str(int(partyGauge)) + "%!")
+		print("%s confirmed." % skills[str(name)]['name'])
 		
-	print(str(skills[str(name)]['name']) + " confirmed! " + str(critroll) + " " + str(statusroll))
-
-@bot.command(name="buff")
-
-#Skill List
-
-#Tarukaja
-#Rakukaja
-#Heat Riser
-#Tarunda
-#Rakunda
-
-#Charge
-#Concentrate
-
-#Wall
-#Tetrakarn
-#Makarakarn
-
-#Amrita Drop
-#Amrita Shower
-
-async def _buff(name):
-	global partyGauge
-	partyGauge = int(partyGauge) + skills[str(name)]['gauge']
-	await bot.say(skills[str(name)]['message'] + str(int(partyGauge)) + "%!")
-	print("%s confirmed." % skills[str(name)]['name'])
-	
-@bot.command(name="status")
-
-#Skill List
-
-#Confuse
-#Dormina
-	
-async def _status(name):
-	global partyGauge
-	statusroll = random.randrange(1, 3)
-	if statusroll == 1:
-		partyGauge = partyGauge + 1
-		await bot.say(skills[str(name)]['message1'] + str(partyGauge) + "%!")
-	else:
-		await bot.say(skills[str(name)]['message2'])
-	print(skills[str(name)]['name'] + " confirmed. " + str(statusroll))
-
+	if skills[str(name)]['type'] == 'status':
+		statusroll = random.randrange(1, 3)
+		if statusroll == 1:
+			partyGauge = partyGauge + 1
+			await bot.say(skills[str(name)]['message1'] + str(partyGauge) + "%!")
+		else:
+			await bot.say(skills[str(name)]['message2'])
+		print(skills[str(name)]['name'] + " confirmed. " + str(statusroll))
 @bot.command(name="heal")
 
 #Skill List
