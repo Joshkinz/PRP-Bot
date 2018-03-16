@@ -223,7 +223,7 @@ async def _skill(name, strn=1, atk=1, endef=1):
 		await bot.say(skills[str(name)]['message'] + str(int(partyGauge)) + "%!")
 		print("%s confirmed." % skills[str(name)]['name'])
 		
-	if skills[str(name)]['type'] == 'status':
+	if skills[str(name)]['type'] == 'effect':
 		statusroll = random.randrange(1, 3)
 		if statusroll == 1:
 			partyGauge = partyGauge + 1
@@ -231,21 +231,13 @@ async def _skill(name, strn=1, atk=1, endef=1):
 		else:
 			await bot.say(skills[str(name)]['message2'])
 		print(skills[str(name)]['name'] + " confirmed. " + str(statusroll))
-@bot.command(name="heal")
-
-#Skill List
-
-#Dia
-#Diarama
-#Diarahan
-
-async def _heal(name, maxhp):
-	global partyGauge
-	if int(maxhp) > 999:
-		maxhp = 999
-	if int(maxhp) < 1:
-		maxhp = 1
-	maxhp = int(maxhp)
+		
+	if skills[str(name)]['type'] == 'heal':
+	if int(strn) > 999:
+		strn = 999
+	if int(strn) < 1:
+		strn = 1
+	maxhp = int(strn)
 	
 	bonus = (maxhp / skills[str(name)]['bonus1'])
 	
@@ -263,7 +255,7 @@ async def _heal(name, maxhp):
 	
 	print("%s confirmed." % skills[str(name)]['name'])
 	
-@bot.command(name="partygauge")
+@bot.command(name="party")
 async def _partygauge(name):
 	global partyGauge
 	if name.lower() == "check":
