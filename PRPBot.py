@@ -349,4 +349,4 @@ async def _gauge(name, number):
 		await bot.say("Party gauge: " + str(partyGauge) + "%!")
 		print("Party gauge decreased by " + str(number) + "%")
 
-bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
+bot.run('-snip-')
