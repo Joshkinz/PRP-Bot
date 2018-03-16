@@ -17,10 +17,10 @@ with open('skills.json') as file:
 
 @bot.event
 async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
+	print('Logged in as')
+	print(bot.user.name)
+	print(bot.user.id)
+	print('------')
 
 @bot.command(name="attack")
 async def _attack(strn, atk, endef):
@@ -328,25 +328,29 @@ async def _partygauge(name):
 			await bot.say("Chain attack initiated!\nParty gauge: " + str(int(partyGauge)) + "%!")
 			print("Chain Attack confirmed.")
 					
-@bot.command(name="gauge")
-async def _gauge(name, number):
+@bot.command(name="gauge", pass_context = True)
+async def _gauge(ctx, name, number):
 	global partyGauge
-	if name.lower() == "increase":
-		partyGauge = partyGauge + int(number)
-		if int(partyGauge) < 0:
-			partyGauge = 1
-		if int(partyGauge) > 100:
-				partyGauge = 100
-		await bot.say("Party gauge: " + str(partyGauge) + "%!")
-		print("Party gauge increased by " + str(number) + "%")
-		
-	if name.lower() == "decrease":
-		partyGauge = partyGauge - int(number)
-		if int(partyGauge) < 0:
-			partyGauge = 1
-		if int(partyGauge) > 100:
-				partyGauge = 100
-		await bot.say("Party gauge: " + str(partyGauge) + "%!")
-		print("Party gauge decreased by " + str(number) + "%")
+	if ctx.message.author.server_permissions.administrator:
+		if name.lower() == "increase":
+			partyGauge = partyGauge + int(number)
+			if int(partyGauge) < 0:
+				partyGauge = 1
+			if int(partyGauge) > 100:
+					partyGauge = 100
+			await bot.say("Party gauge: " + str(partyGauge) + "%!")
+			print("Party gauge increased by " + str(number) + "%")
+			
+		if name.lower() == "decrease":
+			partyGauge = partyGauge - int(number)
+			if int(partyGauge) < 0:
+				partyGauge = 1
+			if int(partyGauge) > 100:
+					partyGauge = 100
+			await bot.say("Party gauge: " + str(partyGauge) + "%!")
+			print("Party gauge decreased by " + str(number) + "%")
+	else:
+		await bot.say("This command is only usable by administrators.")
+		print("Invalid gauge command by " + ctx.message.author.name)
 
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
