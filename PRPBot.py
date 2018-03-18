@@ -14,6 +14,8 @@ partyGauge = 0
 
 with open('skills.json') as file:
 	skills = json.load(file)
+with open('characters.json') as file:
+	characters = json.load(file)
 
 @bot.event
 async def on_ready():
@@ -22,10 +24,15 @@ async def on_ready():
 	print(bot.user.id)
 	print('------')
 
-@bot.command(name="attack")
-async def _attack(strn, atk, endef):
+@bot.command(name="attack", pass_context = True)
+async def _attack(ctx, endef, strn=1, atk=1):
 	global message
 	global partyGauge
+	
+	if strn == 1:
+		strn = characters[str(ctx.message.author.name.lower())]['strength']
+	if atk == 1:
+		atk = characters[str(ctx.message.author.name.lower())]['weaponatk']
 	
 	#Set minimum and maximum values.
 	if int(strn) < 1:
@@ -93,47 +100,17 @@ async def _attack(strn, atk, endef):
 	#Print a confirmation message in the console.
 	print("Attack confirmed. " + str(critroll))
 
-@bot.command(name="skill")
-
-#Skill List
-
-#Lunge
-#Cleave
-#Giant Slice
-#Megaton Raid
-#God's Hand
-
-#Double Fangs
-#Myriad Slashes
-
-#Lucky Punch
-#Miracle Punch
-
-#Agi
-#Garu
-#Zio
-#Bufu
-
-#Agilao
-#Garula
-#Zionga
-#Bufula
-
-#Agidyne
-#Garudyne
-#Ziodyne
-#Bufudyne
-
-#Inferno
-#Panta Rhei
-#Thunder Reign
-#Diamond Dust
-
-async def _skill(name, strn=1, atk=1, endef=1):
+@bot.command(name="skill", pass_context = True)
+async def _skill(ctx, name, endef, strn=1, atk=1):
 	global message
 	global message2
 	global statusmessage
 	global partyGauge
+	
+	if strn == 1:
+		strn = characters[str(ctx.message.author.name.lower())]['strength']
+	if atk == 1:
+		atk = characters[str(ctx.message.author.name.lower())]['weaponatk']
 		
 	if skills[str(name)]['type'] == "attack":
 		if int(strn) < 1:
@@ -211,9 +188,9 @@ async def _skill(name, strn=1, atk=1, endef=1):
 			statusmessage = skills[str(name)]['status']
 		
 		if skills[str(name)]['hits'] == 2:
-			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + ".\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + ".\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
 		else:
-			await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + " HP. " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+			await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + ". " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
 		message = "Total damage: "
 		message2 = "Total damage: "
 		statusmessage = ""
@@ -323,5 +300,38 @@ async def _gauge(ctx, name, number):
 	else:
 		await bot.say("This command is only usable by administrators.")
 		print("Invalid gauge command by " + ctx.message.author.name)
-
-bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
+		
+@bot.command(name="status", pass_context = True)
+async def _status(ctx, name='a'):
+	username = ctx.message.author.name
+	character = characters[str(username.lower())]
+	if not name == 'a':
+		character2 = characters[str(name.lower())]
+		persona2 = character2['persona']
+	persona = character['persona']
+	if name == 'a':
+		await bot.say("**STATUS**\n----------\n")
+		await bot.say("Name: " + character['firstname'] + " " + character['lastname'] + "\nTeam: " + character['team'] + "\nClass: " + character['class'] + "\nHP: " + str(character['hp']) + "\nSP: " + str(character['sp']) + "\nStrength: " + str(character['strength']) + "\nMagic: " + str(character['magic']) + "\nEndurance: " + str(character['endurance']) + "\nWeapon ATK: " + str(character['weaponatk']) + "\nLevel: " + str(character['level']) + "\nXP to Next: " + str(character['xp']))
+		await bot.say("**PERSONAS**\n----------")
+		if not persona['persona1']['name'] == "n/a":
+			await bot.say("Name 1: " + persona['persona1']['name'] + "\nClass: " + persona['persona1']['class'] + "\nSkill 1: " + persona['persona1']['skill1'] + "\nSkill 2: " + persona['persona1']['skill2'] + "\nSkill 3: " + persona['persona1']['skill3'] + "\nSkill 4: " + persona['persona1']['skill4'] + "\nLevel: " + str(persona['persona1']['level']) + "\nXP to Next: " + str(persona['persona1']['xp']))
+		if not persona['persona2']['name'] == "n/a":
+			await bot.say("Name 2: " + persona['persona2']['name'] + "\nClass: " + persona['persona2']['class'] + "\nSkill 1: " + persona['persona2']['skill1'] + "\nSkill 2: " + persona['persona2']['skill2'] + "\nSkill 3: " + persona['persona2']['skill3'] + "\nSkill 4: " + persona['persona2']['skill4'] + "\nLevel: " + str(persona['persona2']['level']) + "\nXP to Next: " + str(persona['persona2']['xp']))
+		if not persona['persona3']['name'] == "n/a":
+			await bot.say("Name 3: " + persona['persona3']['name'] + "\nClass: " + persona['persona3']['class'] + "\nSkill 1: " + persona['persona3']['skill1'] + "\nSkill 2: " + persona['persona3']['skill2'] + "\nSkill 3: " + persona['persona3']['skill3'] + "\nSkill 4: " + persona['persona3']['skill4'] + "\nLevel: " + str(persona['persona3']['level']) + "\nXP to Next: " + str(persona['persona3']['xp']))
+		if not persona['persona4']['name'] == "n/a":
+			await bot.say("Name 4: " + persona['persona4']['name'] + "\nClass: " + persona['persona4']['class'] + "\nSkill 1: " + persona['persona4']['skill1'] + "\nSkill 2: " + persona['persona4']['skill2'] + "\nSkill 3: " + persona['persona4']['skill3'] + "\nSkill 4: " + persona['persona4']['skill4'] + "\nLevel: " + str(persona['persona4']['level']) + "\nXP to Next: " + str(persona['persona4']['xp']))
+	else:
+		await bot.say("**STATUS**\n----------\n")
+		await bot.say("Name: " + character2['firstname'] + " " + character2['lastname'] + "\nTeam: " + character2['team'] + "\nClass: " + character2['class'] + "\nHP: " + str(character2['hp']) + "\nSP: " + str(character2['sp']) + "\nWeapon ATK: " + str(character2['weaponatk']) + "\nLevel: " + str(character2['level']) + "\nXP to Next: " + str(character2['xp']))
+		await bot.say("**PERSONAS**\n----------")
+		if not persona['persona1']['name'] == "n/a":
+			await bot.say("Name 1: " + persona2['persona1']['name'] + "\nClass: " + persona2['persona1']['class'] + "\nSkill 1: " + persona2['persona1']['skill1'] + "\nSkill 2: " + persona2['persona1']['skill2'] + "\nSkill 3: " + persona2['persona1']['skill3'] + "\nSkill 4: " + persona2['persona1']['skill4'] + "\nLevel: " + str(persona2['persona1']['level']) + "\nXP to Next: " + str(persona2['persona1']['xp']))
+		if not persona['persona2']['name'] == "n/a":
+			await bot.say("Name 2: " + persona2['persona2']['name'] + "\nClass: " + persona2['persona2']['class'] + "\nSkill 1: " + persona2['persona2']['skill1'] + "\nSkill 2: " + persona2['persona2']['skill2'] + "\nSkill 3: " + persona2['persona2']['skill3'] + "\nSkill 4: " + persona2['persona2']['skill4'] + "\nLevel: " + str(persona2['persona2']['level']) + "\nXP to Next: " + str(persona2['persona2']['xp']))
+		if not persona['persona3']['name'] == "n/a":
+			await bot.say("Name 3: " + persona2['persona3']['name'] + "\nClass: " + persona2['persona3']['class'] + "\nSkill 1: " + persona2['persona3']['skill1'] + "\nSkill 2: " + persona2['persona3']['skill2'] + "\nSkill 3: " + persona2['persona3']['skill3'] + "\nSkill 4: " + persona2['persona3']['skill4'] + "\nLevel: " + str(persona2['persona3']['level']) + "\nXP to Next: " + str(persona2['persona3']['xp']))
+		if not persona['persona4']['name'] == "n/a":
+			await bot.say("Name 4: " + persona2['persona4']['name'] + "\nClass: " + persona2['persona4']['class'] + "\nSkill 1: " + persona2['persona4']['skill1'] + "\nSkill 2: " + persona2['persona4']['skill2'] + "\nSkill 3: " + persona2['persona4']['skill3'] + "\nSkill 4: " + persona2['persona4']['skill4'] + "\nLevel: " + str(persona2['persona4']['level']) + "\nXP to Next: " + str(persona2['persona4']['xp']))
+				
+bot.run('-snip-')
