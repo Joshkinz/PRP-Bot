@@ -1,0 +1,238 @@
+{
+	"joshkinz": {
+		"firstname": "Lucas",
+		"lastname": "Erdem",
+		"class": "Attack",
+		"persona": {
+			"persona1": {
+				"name": "Izanagi",
+				"class": "Attack",
+				"skill1": "Zio",
+				"skill2": "Cleave",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "1",
+				"xp": "100"
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "str",
+		"bane": "mag",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 3,
+		"magic": 2,
+		"endurance": 2,
+		"weaponatk": 40,
+		"hp": 57,
+		"sp": 19
+	},
+	
+	"swiggle": {
+		"firstname": "Bailey",
+		"lastname": "Knight",
+		"class": "Tank",
+		"persona": {
+			"persona1": {
+				"name": "Orpheus",
+				"class": "Tank",
+				"skill1": "Agi",
+				"skill2": "Lunge",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": 1,
+				"xp": 0
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "end",
+		"bane": "mag",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 2,
+		"magic": 2,
+		"endurance": 4,
+		"weaponatk": 40,
+		"hp": 73,
+		"sp": 13
+	},
+	
+		"crying": {
+		"firstname": "Wes",
+		"lastname": "Tate",
+		"class": "Healer",
+		"persona": {
+			"persona1": {
+				"name": "Polydeuces",
+				"class": "Healer",
+				"skill1": "Dia",
+				"skill2": "Bufu",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": 1,
+				"xp": 0
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "mag",
+		"bane": "end",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 2,
+		"magic": 4,
+		"endurance": 2,
+		"weaponatk": 40,
+		"hp": 45,
+		"sp": 32
+	},
+	
+	"liminori": {
+		"firstname": "Dorothy",
+		"lastname": "Blackwell",
+		"class": "Magic",
+		"persona": {
+			"persona1": {
+				"name": "Johanna",
+				"class": "Magic",
+				"skill1": "Garu",
+				"skill2": "Dia",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": 1,
+				"xp": 0
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "mag",
+		"bane": "str",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 2,
+		"magic": 3,
+		"endurance": 3,
+		"weaponatk": 40,
+		"hp": 52,
+		"sp": 23
+	}
+}
+			
