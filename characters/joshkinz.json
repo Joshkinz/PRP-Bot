@@ -1,1 +1,58 @@
-placeholder
+{
+		"firstname": "Lucas",
+		"lastname": "Erdem",
+		"class": "Attack",
+		"persona": {
+			"persona1": {
+				"name": "Izanagi",
+				"class": "Attack",
+				"skill1": "Zio",
+				"skill2": "Cleave",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "1",
+				"xp": "100"
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "str",
+		"bane": "mag",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 3,
+		"magic": 2,
+		"endurance": 2,
+		"weaponatk": 40,
+		"hp": 57,
+		"sp": 19
+	}
