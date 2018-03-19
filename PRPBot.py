@@ -341,5 +341,39 @@ async def _levelup(ctx, name):
 	if ctx.message.author.server_permissions.administrator:
 		characters[str(name)]['level'] = characters[str(name)]['level'] + 1
 		characters[str(name)]['xp'] = xpcurve[str(characters[str(name)]['level'])]['xp']
+		if characters[str(name)]['boon'] == 'str':
+			if characters[str(name)]['bane'] == 'mag':
+				levelup1 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Endurance', 'Magic')
+				levelup2 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Endurance', 'Magic')
+			if characters[str(name)]['bane'] == 'end':
+				levelup1 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Magic', 'Magic')
+				levelup2 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Magic', 'Magic')
+		if characters[str(name)]['boon'] == 'mag':
+			if characters[str(name)]['bane'] == 'str':
+				levelup1 = random.choice('Strength', 'Endurance', 'Endurance', 'Magic', 'Magic', 'Magic')
+				levelup2 = random.choice('Strength', 'Endurance', 'Endurance', 'Magic', 'Magic', 'Magic')
+			if characters[str(name)]['bane'] == 'end':
+				levelup1 = random.choice('Strength', 'Strength', 'Endurance', 'Magic', 'Magic', 'Magic')
+				levelup2 = random.choice('Strength', 'Strength', 'Endurance', 'Magic', 'Magic', 'Magic')
+		if characters[str(name)]['boon'] == 'end':
+			if characters[str(name)]['bane'] == 'str':
+				levelup1 = random.choice('Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic', 'Magic')
+				levelup2 = random.choice('Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic', 'Magic')
+			if characters[str(name)]['bane'] == 'mag':
+				levelup1 = random.choice('Strength', 'Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic')
+				levelup2 = random.choice('Strength', 'Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic')
+		await bot.say("Level up! Stats increased: " + levelup1 + "and " +levelup2)
+		if levelup1 == 'Strength':
+			characters[str(name)]['strength'] = characters[str(name)]['strength'] + 1
+		if levelup1 == 'Magic':
+			characters[str(name)]['strength'] = characters[str(name)]['magic'] + 1
+		if levelup1 == 'Endurance':
+			characters[str(name)]['strength'] = characters[str(name)]['endurance'] + 1
+		if levelup12 == 'Strength':
+			characters[str(name)]['strength'] = characters[str(name)]['strength'] + 1
+		if levelup2 == 'Magic':
+			characters[str(name)]['strength'] = characters[str(name)]['magic'] + 1
+		if levelup2 == 'Endurance':
+			characters[str(name)]['strength'] = characters[str(name)]['endurance'] + 1
 	
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
