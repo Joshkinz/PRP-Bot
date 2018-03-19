@@ -1,0 +1,58 @@
+{
+		"firstname": "Dorothy",
+		"lastname": "Blackwell",
+		"class": "Magic",
+		"persona": {
+			"persona1": {
+				"name": "Johanna",
+				"class": "Magic",
+				"skill1": "Garu",
+				"skill2": "Dia",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": 1,
+				"xp": 0
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "mag",
+		"bane": "str",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 2,
+		"magic": 3,
+		"endurance": 3,
+		"weaponatk": 40,
+		"hp": 52,
+		"sp": 23
+	}
