@@ -16,6 +16,8 @@ with open('skills.json') as file:
 	skills = json.load(file)
 with open('characters.json') as file:
 	characters = json.load(file)
+with open('xp.json') as file:
+	xpcurve = json.load(file)
 
 @bot.event
 async def on_ready():
@@ -212,11 +214,11 @@ async def _skill(ctx, name, endef, strn=1, atk=1):
 		print(skills[str(name)]['name'] + " confirmed. " + str(statusroll))
 		
 	if skills[str(name)]['type'] == 'heal':
-		if int(strn) > 999:
-			strn = 999
-		if int(strn) < 1:
-			strn = 1
-		maxhp = int(strn)
+		if int(endef) > 999:
+			endef = 999
+		if int(endef) < 1:
+			endef = 1
+		maxhp = int(endef)
 		
 		bonus = (maxhp / skills[str(name)]['bonus1'])
 		
@@ -333,5 +335,11 @@ async def _status(ctx, name='a'):
 			await bot.say("Name 3: " + persona2['persona3']['name'] + "\nClass: " + persona2['persona3']['class'] + "\nSkill 1: " + persona2['persona3']['skill1'] + "\nSkill 2: " + persona2['persona3']['skill2'] + "\nSkill 3: " + persona2['persona3']['skill3'] + "\nSkill 4: " + persona2['persona3']['skill4'] + "\nLevel: " + str(persona2['persona3']['level']) + "\nXP to Next: " + str(persona2['persona3']['xp']))
 		if not persona['persona4']['name'] == "n/a":
 			await bot.say("Name 4: " + persona2['persona4']['name'] + "\nClass: " + persona2['persona4']['class'] + "\nSkill 1: " + persona2['persona4']['skill1'] + "\nSkill 2: " + persona2['persona4']['skill2'] + "\nSkill 3: " + persona2['persona4']['skill3'] + "\nSkill 4: " + persona2['persona4']['skill4'] + "\nLevel: " + str(persona2['persona4']['level']) + "\nXP to Next: " + str(persona2['persona4']['xp']))
-				
-bot.run('-snip-')
+
+@bot.command(name="levelup", pass_context = True)
+async def _levelup(ctx, name):
+	if ctx.message.author.server_permissions.administrator:
+		characters[str(name)]['level'] = characters[str(name)]['level'] + 1
+		characters[str(name)]['xp'] = xpcurve[str(characters[str(name)]['level'])]['xp']
+	
+bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
