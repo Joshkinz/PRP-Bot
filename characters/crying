@@ -1,0 +1,58 @@
+{
+		"firstname": "Wes",
+		"lastname": "Tate",
+		"class": "Healer",
+		"persona": {
+			"persona1": {
+				"name": "Polydeuces",
+				"class": "Healer",
+				"skill1": "Dia",
+				"skill2": "Bufu",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": 1,
+				"xp": 0
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "mag",
+		"bane": "end",
+		"team": "Law Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 2,
+		"magic": 4,
+		"endurance": 2,
+		"weaponatk": 40,
+		"hp": 45,
+		"sp": 32
+	}
