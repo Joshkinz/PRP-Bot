@@ -233,6 +233,65 @@
 		"weaponatk": 40,
 		"hp": 52,
 		"sp": 23
+	},
+	
+	"shadowjoe323": {
+		"firstname": "Ash",
+		"lastname": "Hayden",
+		"class": "Attack",
+		"persona": {
+			"persona1": {
+				"name": "Mephistopheles",
+				"class": "Attack",
+				"skill1": "Lucky Punch",
+				"skill2": "Agi",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "1",
+				"xp": "100"
+			},
+			"persona2": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona3": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			},
+			"persona4": {
+				"name": "n/a",
+				"class": "n/a",
+				"skill1": "n/a",
+				"skill2": "n/a",
+				"skill3": "n/a",
+				"skill4": "n/a",
+				"level": "n/a",
+				"xp": "n/a"
+			}
+		},
+		"boon": "str",
+		"bane": "mag",
+		"team": "Chaos Team",
+		"level": 1,
+		"xp": 100,
+		"strength": 4,
+		"magic": 1,
+		"endurance": 2,
+		"weaponatk": 40,
+		"hp": 61,
+		"sp": 15
 	}
 }
 			
