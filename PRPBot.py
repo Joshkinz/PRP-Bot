@@ -80,18 +80,23 @@ async def _attack(ctx, endef, name='a'):
 		name = "nintendofan"
 	if name.lower() == "nfan":
 		name = "nintendofan"
-
-	hp = str(name)['currenthp']
-	sp = str(name)['currentsp']
+		
+	if endef not in characterlist:
+		hp = eval(name)['currenthp']
+		sp = eval(name)['currentsp']
+	if endef in characterlist:
+		hp = personas[str(endef)]['currenthp']
+		sp = personas[str(endef)]['currentsp']
 	
-	if strn == 1:
+	if endef in characterlist:
 		if ctx.message.author.name.lower() not in characterlist:
 			strn = personas[str(endef)]['strength']
-		strn = eval(ctx.message.author.name.lower())['strength']
-	if atk == 1:
-		if ctx.message.author.name.lower() not in characterlist:
 			atk = personas[str(endef)]['weaponatk']
+			end = eval(name)['endurance']
+	if endef not in characterlist:
+		strn = eval(ctx.message.author.name.lower())['strength']
 		atk = eval(ctx.message.author.name.lower())['weaponatk']
+		end = eval(name)['endurance']
 	
 	#Set minimum and maximum values.
 	if int(strn) < 1:
