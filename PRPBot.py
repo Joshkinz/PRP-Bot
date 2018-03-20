@@ -18,6 +18,22 @@ with open('characters.json') as file:
 	characters = json.load(file)
 with open('xp.json') as file:
 	xpcurve = json.load(file)
+	
+with open('characters/joshkinz.json') as file:
+	joshkinz = json.load(file)
+with open('characters/crying.json') as file:
+	crying = json.load(file)
+with open('characters/liminori.json') as file:
+	liminori = json.load(file)
+with open('characters/swiggle.json') as file:
+	swiggle = json.load(file)
+	
+with open('characters/shadowjoe323.json') as file:
+	shadowjoe323 = json.load(file)
+with open('characters/lord_thantus.json') as file:
+	lord_thantus = json.load(file)
+with open('characters/qlonever.json') as file:
+	qlonever = json.load(file)
 
 @bot.event
 async def on_ready():
@@ -32,9 +48,9 @@ async def _attack(ctx, endef, strn=1, atk=1):
 	global partyGauge
 	
 	if strn == 1:
-		strn = characters[str(ctx.message.author.name.lower())]['strength']
+		strn = eval(ctx.message.author.name.lower())['strength']
 	if atk == 1:
-		atk = characters[str(ctx.message.author.name.lower())]['weaponatk']
+		atk = eval(ctx.message.author.name.lower())['weaponatk']
 	
 	#Set minimum and maximum values.
 	if int(strn) < 1:
@@ -110,9 +126,9 @@ async def _skill(ctx, name, endef, strn=1, atk=1):
 	global partyGauge
 	
 	if strn == 1:
-		strn = characters[str(ctx.message.author.name.lower())]['strength']
+		strn = eval(ctx.message.author.name.lower())['strength']
 	if atk == 1:
-		atk = characters[str(ctx.message.author.name.lower())]['weaponatk']
+		atk = eval(ctx.message.author.name.lower())['weaponatk']
 		
 	if skills[str(name)]['type'] == "attack":
 		if int(strn) < 1:
@@ -305,75 +321,277 @@ async def _gauge(ctx, name, number):
 		
 @bot.command(name="status", pass_context = True)
 async def _status(ctx, name='a'):
-	username = ctx.message.author.name
-	character = characters[str(username.lower())]
+	if name.lower() == "lucas":
+		name = "joshkinz"
+	if name.lower() == "wes":
+		name = "crying"
+	if name.lower() == "dorothy":
+		name = "liminori"
+	if name.lower() == "limi":
+		name = "liminori"
+	if name.lower() == "bailey":
+		name = "swiggle"
+	if name.lower() == "ash":
+		name = "shadowjoe323"
+	if name.lower() == "joe":
+		name = "shadowjoe323"
+	if name.lower() == "shadowjoe":
+		name = "shadowjoe323"
+	if name.lower() == "arlo":
+		name = "lord_thantus"
+	if name.lower() == "thantus":
+		name = "lord_thantus"
+	if name.lower() == "quentin":
+		name = "qlonever"
+	if name.lower() == "qlon":
+		name = "qlonever"
+	if name.lower() == "emily":
+		name = "nintendofan"
+	if name.lower() == "nfan":
+		name = "nintendofan"
+		
+	character = eval(ctx.message.author.name.lower())
 	if not name == 'a':
-		character2 = characters[str(name.lower())]
-		persona2 = character2['persona']
+		character2 = eval(ctx.message.author.name.lower())
+		persona2 = eval(ctx.message.author.name.lower())['persona']
 	persona = character['persona']
+	
 	if name == 'a':
 		await bot.say("**STATUS**\n----------\n")
 		await bot.say("Name: " + character['firstname'] + " " + character['lastname'] + "\nTeam: " + character['team'] + "\nClass: " + character['class'] + "\nHP: " + str(character['hp']) + "\nSP: " + str(character['sp']) + "\nStrength: " + str(character['strength']) + "\nMagic: " + str(character['magic']) + "\nEndurance: " + str(character['endurance']) + "\nWeapon ATK: " + str(character['weaponatk']) + "\nLevel: " + str(character['level']) + "\nXP to Next: " + str(character['xp']))
 		await bot.say("**PERSONAS**\n----------")
 		if not persona['persona1']['name'] == "n/a":
-			await bot.say("Name 1: " + persona['persona1']['name'] + "\nClass: " + persona['persona1']['class'] + "\nSkill 1: " + persona['persona1']['skill1'] + "\nSkill 2: " + persona['persona1']['skill2'] + "\nSkill 3: " + persona['persona1']['skill3'] + "\nSkill 4: " + persona['persona1']['skill4'] + "\nLevel: " + str(persona['persona1']['level']) + "\nXP to Next: " + str(persona['persona1']['xp']))
+			await bot.say("Name 1: " + persona['persona1']['name'] + "\nClass: " + persona['persona1']['class'] + "\nSkill 1: " + persona['persona1']['skill1'] + "\nSkill 2: " + persona['persona1']['skill2'] + "\nSkill 3: " + persona['persona1']['skill3'] + "\nSkill 4: " + persona['persona1']['skill4'])
 		if not persona['persona2']['name'] == "n/a":
-			await bot.say("Name 2: " + persona['persona2']['name'] + "\nClass: " + persona['persona2']['class'] + "\nSkill 1: " + persona['persona2']['skill1'] + "\nSkill 2: " + persona['persona2']['skill2'] + "\nSkill 3: " + persona['persona2']['skill3'] + "\nSkill 4: " + persona['persona2']['skill4'] + "\nLevel: " + str(persona['persona2']['level']) + "\nXP to Next: " + str(persona['persona2']['xp']))
+			await bot.say("Name 2: " + persona['persona2']['name'] + "\nClass: " + persona['persona2']['class'] + "\nSkill 1: " + persona['persona2']['skill1'] + "\nSkill 2: " + persona['persona2']['skill2'] + "\nSkill 3: " + persona['persona2']['skill3'] + "\nSkill 4: " + persona['persona2']['skill4'])
 		if not persona['persona3']['name'] == "n/a":
-			await bot.say("Name 3: " + persona['persona3']['name'] + "\nClass: " + persona['persona3']['class'] + "\nSkill 1: " + persona['persona3']['skill1'] + "\nSkill 2: " + persona['persona3']['skill2'] + "\nSkill 3: " + persona['persona3']['skill3'] + "\nSkill 4: " + persona['persona3']['skill4'] + "\nLevel: " + str(persona['persona3']['level']) + "\nXP to Next: " + str(persona['persona3']['xp']))
+			await bot.say("Name 3: " + persona['persona3']['name'] + "\nClass: " + persona['persona3']['class'] + "\nSkill 1: " + persona['persona3']['skill1'] + "\nSkill 2: " + persona['persona3']['skill2'] + "\nSkill 3: " + persona['persona3']['skill3'] + "\nSkill 4: " + persona['persona3']['skill4'])
 		if not persona['persona4']['name'] == "n/a":
-			await bot.say("Name 4: " + persona['persona4']['name'] + "\nClass: " + persona['persona4']['class'] + "\nSkill 1: " + persona['persona4']['skill1'] + "\nSkill 2: " + persona['persona4']['skill2'] + "\nSkill 3: " + persona['persona4']['skill3'] + "\nSkill 4: " + persona['persona4']['skill4'] + "\nLevel: " + str(persona['persona4']['level']) + "\nXP to Next: " + str(persona['persona4']['xp']))
+			await bot.say("Name 4: " + persona['persona4']['name'] + "\nClass: " + persona['persona4']['class'] + "\nSkill 1: " + persona['persona4']['skill1'] + "\nSkill 2: " + persona['persona4']['skill2'] + "\nSkill 3: " + persona['persona4']['skill3'] + "\nSkill 4: " + persona['persona4']['skill4'])
 	else:
 		await bot.say("**STATUS**\n----------\n")
 		await bot.say("Name: " + character2['firstname'] + " " + character2['lastname'] + "\nTeam: " + character2['team'] + "\nClass: " + character2['class'] + "\nHP: " + str(character2['hp']) + "\nSP: " + str(character2['sp']) + "\nWeapon ATK: " + str(character2['weaponatk']) + "\nLevel: " + str(character2['level']) + "\nXP to Next: " + str(character2['xp']))
 		await bot.say("**PERSONAS**\n----------")
 		if not persona['persona1']['name'] == "n/a":
-			await bot.say("Name 1: " + persona2['persona1']['name'] + "\nClass: " + persona2['persona1']['class'] + "\nSkill 1: " + persona2['persona1']['skill1'] + "\nSkill 2: " + persona2['persona1']['skill2'] + "\nSkill 3: " + persona2['persona1']['skill3'] + "\nSkill 4: " + persona2['persona1']['skill4'] + "\nLevel: " + str(persona2['persona1']['level']) + "\nXP to Next: " + str(persona2['persona1']['xp']))
+			await bot.say("Name 1: " + persona2['persona1']['name'] + "\nClass: " + persona2['persona1']['class'] + "\nSkill 1: " + persona2['persona1']['skill1'] + "\nSkill 2: " + persona2['persona1']['skill2'] + "\nSkill 3: " + persona2['persona1']['skill3'] + "\nSkill 4: " + persona2['persona1']['skill4'])
 		if not persona['persona2']['name'] == "n/a":
-			await bot.say("Name 2: " + persona2['persona2']['name'] + "\nClass: " + persona2['persona2']['class'] + "\nSkill 1: " + persona2['persona2']['skill1'] + "\nSkill 2: " + persona2['persona2']['skill2'] + "\nSkill 3: " + persona2['persona2']['skill3'] + "\nSkill 4: " + persona2['persona2']['skill4'] + "\nLevel: " + str(persona2['persona2']['level']) + "\nXP to Next: " + str(persona2['persona2']['xp']))
+			await bot.say("Name 2: " + persona2['persona2']['name'] + "\nClass: " + persona2['persona2']['class'] + "\nSkill 1: " + persona2['persona2']['skill1'] + "\nSkill 2: " + persona2['persona2']['skill2'] + "\nSkill 3: " + persona2['persona2']['skill3'] + "\nSkill 4: " + persona2['persona2']['skill4'])
 		if not persona['persona3']['name'] == "n/a":
-			await bot.say("Name 3: " + persona2['persona3']['name'] + "\nClass: " + persona2['persona3']['class'] + "\nSkill 1: " + persona2['persona3']['skill1'] + "\nSkill 2: " + persona2['persona3']['skill2'] + "\nSkill 3: " + persona2['persona3']['skill3'] + "\nSkill 4: " + persona2['persona3']['skill4'] + "\nLevel: " + str(persona2['persona3']['level']) + "\nXP to Next: " + str(persona2['persona3']['xp']))
+			await bot.say("Name 3: " + persona2['persona3']['name'] + "\nClass: " + persona2['persona3']['class'] + "\nSkill 1: " + persona2['persona3']['skill1'] + "\nSkill 2: " + persona2['persona3']['skill2'] + "\nSkill 3: " + persona2['persona3']['skill3'] + "\nSkill 4: " + persona2['persona3']['skill4'])
 		if not persona['persona4']['name'] == "n/a":
-			await bot.say("Name 4: " + persona2['persona4']['name'] + "\nClass: " + persona2['persona4']['class'] + "\nSkill 1: " + persona2['persona4']['skill1'] + "\nSkill 2: " + persona2['persona4']['skill2'] + "\nSkill 3: " + persona2['persona4']['skill3'] + "\nSkill 4: " + persona2['persona4']['skill4'] + "\nLevel: " + str(persona2['persona4']['level']) + "\nXP to Next: " + str(persona2['persona4']['xp']))
+			await bot.say("Name 4: " + persona2['persona4']['name'] + "\nClass: " + persona2['persona4']['class'] + "\nSkill 1: " + persona2['persona4']['skill1'] + "\nSkill 2: " + persona2['persona4']['skill2'] + "\nSkill 3: " + persona2['persona4']['skill3'] + "\nSkill 4: " + persona2['persona4']['skill4'])
 
 @bot.command(name="levelup", pass_context = True)
 async def _levelup(ctx, name):
+	if name.lower() == "lucas":
+		name = "joshkinz"
+	if name.lower() == "wes":
+		name = "crying"
+	if name.lower() == "dorothy":
+		name = "liminori"
+	if name.lower() == "limi":
+		name = "liminori"
+	if name.lower() == "bailey":
+		name = "swiggle"
+	if name.lower() == "ash":
+		name = "shadowjoe323"
+	if name.lower() == "joe":
+		name = "shadowjoe323"
+	if name.lower() == "shadowjoe":
+		name = "shadowjoe323"
+	if name.lower() == "arlo":
+		name = "lord_thantus"
+	if name.lower() == "thantus":
+		name = "lord_thantus"
+	if name.lower() == "quentin":
+		name = "qlonever"
+	if name.lower() == "qlon":
+		name = "qlonever"
+	if name.lower() == "emily":
+		name = "nintendofan"
+	if name.lower() == "nfan":
+		name = "nintendofan"
+		
+	strength = eval(name)['strength']
+	magic = eval(name)['magic']
+	endurance = eval(name)['endurance']
+		
 	if ctx.message.author.server_permissions.administrator:
-		characters[str(name)]['level'] = characters[str(name)]['level'] + 1
-		characters[str(name)]['xp'] = xpcurve[str(characters[str(name)]['level'])]['xp']
-		if characters[str(name)]['boon'] == 'str':
-			if characters[str(name)]['bane'] == 'mag':
-				levelup1 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Endurance', 'Magic')
-				levelup2 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Endurance', 'Magic')
-			if characters[str(name)]['bane'] == 'end':
-				levelup1 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Magic', 'Magic')
-				levelup2 = random.choice('Strength', 'Strength', 'Strength', 'Endurance', 'Magic', 'Magic')
-		if characters[str(name)]['boon'] == 'mag':
-			if characters[str(name)]['bane'] == 'str':
-				levelup1 = random.choice('Strength', 'Endurance', 'Endurance', 'Magic', 'Magic', 'Magic')
-				levelup2 = random.choice('Strength', 'Endurance', 'Endurance', 'Magic', 'Magic', 'Magic')
-			if characters[str(name)]['bane'] == 'end':
-				levelup1 = random.choice('Strength', 'Strength', 'Endurance', 'Magic', 'Magic', 'Magic')
-				levelup2 = random.choice('Strength', 'Strength', 'Endurance', 'Magic', 'Magic', 'Magic')
-		if characters[str(name)]['boon'] == 'end':
-			if characters[str(name)]['bane'] == 'str':
-				levelup1 = random.choice('Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic', 'Magic')
-				levelup2 = random.choice('Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic', 'Magic')
-			if characters[str(name)]['bane'] == 'mag':
-				levelup1 = random.choice('Strength', 'Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic')
-				levelup2 = random.choice('Strength', 'Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic')
-		await bot.say("Level up! Stats increased: " + levelup1 + "and " +levelup2)
+		eval(name)['level'] = eval(name)['level'] + 1
+		eval(name)['xp'] = xpcurve[str(eval(name)['level'])]['xp']
+		
+		hproll = random.randrange(7, 15)
+		sproll = random.randrange(4, 9)
+		eval(name)['hp'] = eval(name)['hp'] + hproll
+		eval(name)['sp'] = eval(name)['sp'] + sproll
+		
+		if eval(name)['boon'] == 'str':
+			if eval(name)['bane'] == 'mag':
+				levelup = ['Strength', 'Strength', 'Strength', 'Endurance', 'Endurance', 'Magic']
+				levelup1 = random.choice(levelup)
+				levelup2 = random.choice(levelup)
+			if eval(name)['bane'] == 'end':
+				levelup = ['Strength', 'Strength', 'Strength', 'Endurance', 'Magic', 'Magic']
+				levelup1 = random.choice(levelup)
+				levelup2 = random.choice(levelup)
+		if eval(name)['boon'] == 'mag':
+			if eval(name)['bane'] == 'str':
+				levelup = ['Strength', 'Endurance', 'Endurance', 'Magic', 'Magic', 'Magic']
+				levelup1 = random.choice(levelup)
+				levelup2 = random.choice(levelup)
+			if eval(name)['bane'] == 'end':
+				levelup = ['Strength', 'Strength', 'Endurance', 'Magic', 'Magic', 'Magic']
+				levelup1 = random.choice(levelup)
+				levelup2 = random.choice(levelup)
+		if eval(name)['boon'] == 'end':
+			if eval(name)['bane'] == 'str':
+				levelup = ['Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic', 'Magic']
+				levelup1 = random.choice(levelup)
+				levelup2 = random.choice(levelup)
+			if eval(name)['bane'] == 'mag':
+				levelup = ['Strength', 'Strength', 'Endurance', 'Endurance', 'Endurance', 'Magic']
+				levelup1 = random.choice(levelup)
+				levelup2 = random.choice(levelup)
+		await bot.say("Level up! Level " + str(eval(name)['level']) + "\nStats increased: " + levelup1 + " and " + levelup2 + "\nHp: " + str(eval(name)['hp']) + "\nSP: " + str(eval(name)['sp']))
 		if levelup1 == 'Strength':
-			characters[str(name)]['strength'] = characters[str(name)]['strength'] + 1
+			if levelup2 == 'Strength':
+				strength = eval(name)['strength'] + 2
+			if levelup2 == 'Magic':
+				strength = eval(name)['strength'] + 1
+				magic = eval(name)['magic'] + 1
+			if levelup2 == 'Endurance':
+				strength = eval(name)['strength'] + 1
+				endurance = eval(name)['endurance'] + 1
 		if levelup1 == 'Magic':
-			characters[str(name)]['strength'] = characters[str(name)]['magic'] + 1
+			if levelup2 == 'Strength':
+				magic = eval(name)['magic'] + 1
+				strength = eval(name)['strength'] + 1
+			if levelup2 == 'Magic':
+				magic = eval(name)['magic'] + 2
+			if levelup2 == 'Endurance':
+				magic = eval(name)['magic'] + 1
+				endurance = eval(name)['endurance'] + 1
 		if levelup1 == 'Endurance':
-			characters[str(name)]['strength'] = characters[str(name)]['endurance'] + 1
-		if levelup12 == 'Strength':
-			characters[str(name)]['strength'] = characters[str(name)]['strength'] + 1
-		if levelup2 == 'Magic':
-			characters[str(name)]['strength'] = characters[str(name)]['magic'] + 1
-		if levelup2 == 'Endurance':
-			characters[str(name)]['strength'] = characters[str(name)]['endurance'] + 1
+			if levelup2 == 'Strength':
+				endurance = eval(name)['endurance'] + 1
+				strength = eval(name)['strength'] + 1
+			if levelup2 == 'Magic':
+				endurance = eval(name)['endurance'] + 1
+				magic = eval(name)['magic'] + 1
+			if levelup2 == 'Endurance':
+				endurance = eval(name)['endurance'] + 2
+		
+		data = {
+		"firstname": eval(name)['firstname'],
+		"lastname": eval(name)['lastname'],
+		"class": eval(name)['class'],
+		"persona": {
+			"persona1": {
+				"name": eval(name)['persona']['persona1']['name'],
+				"class": eval(name)['persona']['persona1']['class'],
+				"skill1": eval(name)['persona']['persona1']['skill1'],
+				"skill2": eval(name)['persona']['persona1']['skill2'],
+				"skill3": eval(name)['persona']['persona1']['skill3'],
+				"skill4": eval(name)['persona']['persona1']['skill4']
+			},
+			"persona2": {
+				"name": eval(name)['persona']['persona2']['name'],
+				"class": eval(name)['persona']['persona2']['class'],
+				"skill1": eval(name)['persona']['persona2']['skill1'],
+				"skill2": eval(name)['persona']['persona2']['skill2'],
+				"skill3": eval(name)['persona']['persona2']['skill3'],
+				"skill4": eval(name)['persona']['persona2']['skill4']
+			},
+			"persona3": {
+				"name": eval(name)['persona']['persona3']['name'],
+				"class": eval(name)['persona']['persona3']['class'],
+				"skill1": eval(name)['persona']['persona3']['skill1'],
+				"skill2": eval(name)['persona']['persona3']['skill2'],
+				"skill3": eval(name)['persona']['persona3']['skill3'],
+				"skill4": eval(name)['persona']['persona3']['skill4']
+			},
+			"persona4": {
+				"name": eval(name)['persona']['persona4']['class'],
+				"class": eval(name)['persona']['persona4']['name'],
+				"skill1": eval(name)['persona']['persona4']['skill1'],
+				"skill2": eval(name)['persona']['persona4']['skill2'],
+				"skill3": eval(name)['persona']['persona4']['skill3'],
+				"skill4": eval(name)['persona']['persona4']['skill4']
+			}
+		},
+		"boon": eval(name)['boon'],
+		"bane": eval(name)['bane'],
+		"team": eval(name)['team'],
+		"level": eval(name)['level'],
+		"xp": eval(name)['xp'],
+		"strength": strength,
+		"magic": magic,
+		"endurance": endurance,
+		"weaponatk": eval(name)['weaponatk'],
+		"hp": eval(name)['hp'],
+		"sp": eval(name)['sp'],
+	}
+		d = json.dumps(data)
+		with open("characters/" + str(name) + ".json","w") as f:
+			f.write(d)
+			
+@bot.command(name="weapon", pass_context = True)
+async def _weapon(ctx, value):
+	eval(ctx.message.author.name.lower())['weaponatk'] = value
+	await bot.say("Successfully updated weapon!")
+	data = {
+		"firstname": eval(ctx.message.author.name.lower())['firstname'],
+		"lastname": eval(ctx.message.author.name.lower())['lastname'],
+		"class": eval(ctx.message.author.name.lower())['class'],
+		"persona": {
+			"persona1": {
+				"name": eval(ctx.message.author.name.lower())['persona']['persona1']['name'],
+				"class": eval(ctx.message.author.name.lower())['persona']['persona1']['class'],
+				"skill1": eval(ctx.message.author.name.lower())['persona']['persona1']['skill1'],
+				"skill2": eval(ctx.message.author.name.lower())['persona']['persona1']['skill2'],
+				"skill3": eval(ctx.message.author.name.lower())['persona']['persona1']['skill3'],
+				"skill4": eval(ctx.message.author.name.lower())['persona']['persona1']['skill4']
+			},
+			"persona2": {
+				"name": eval(ctx.message.author.name.lower())['persona']['persona2']['name'],
+				"class": eval(ctx.message.author.name.lower())['persona']['persona2']['class'],
+				"skill1": eval(ctx.message.author.name.lower())['persona']['persona2']['skill1'],
+				"skill2": eval(ctx.message.author.name.lower())['persona']['persona2']['skill2'],
+				"skill3": eval(ctx.message.author.name.lower())['persona']['persona2']['skill3'],
+				"skill4": eval(ctx.message.author.name.lower())['persona']['persona2']['skill4']
+			},
+			"persona3": {
+				"name": eval(ctx.message.author.name.lower())['persona']['persona3']['name'],
+				"class": eval(ctx.message.author.name.lower())['persona']['persona3']['class'],
+				"skill1": eval(ctx.message.author.name.lower())['persona']['persona3']['skill1'],
+				"skill2": eval(ctx.message.author.name.lower())['persona']['persona3']['skill2'],
+				"skill3": eval(ctx.message.author.name.lower())['persona']['persona3']['skill3'],
+				"skill4": eval(ctx.message.author.name.lower())['persona']['persona3']['skill4']
+			},
+			"persona4": {
+				"name": eval(ctx.message.author.name.lower())['persona']['persona4']['class'],
+				"class": eval(ctx.message.author.name.lower())['persona']['persona4']['name'],
+				"skill1": eval(ctx.message.author.name.lower())['persona']['persona4']['skill1'],
+				"skill2": eval(ctx.message.author.name.lower())['persona']['persona4']['skill2'],
+				"skill3": eval(ctx.message.author.name.lower())['persona']['persona4']['skill3'],
+				"skill4": eval(ctx.message.author.name.lower())['persona']['persona4']['skill4']
+			}
+		},
+		"boon":eval(ctx.message.author.name.lower())['boon'],
+		"bane": eval(ctx.message.author.name.lower())['bane'],
+		"team": eval(ctx.message.author.name.lower())['team'],
+		"level": eval(ctx.message.author.name.lower())['level'],
+		"xp": eval(ctx.message.author.name.lower())['xp'],
+		"strength": eval(ctx.message.author.name.lower())['strength'],
+		"magic": eval(ctx.message.author.name.lower())['magic'],
+		"endurance": eval(ctx.message.author.name.lower())['endurance'],
+		"weaponatk": value,
+		"hp": eval(ctx.message.author.name.lower())['hp'],
+		"sp": eval(ctx.message.author.name.lower())['sp'],
+	}
+	d = json.dumps(data)
+	with open("characters/" + str(ctx.message.author.name.lower()) + ".json","w") as f:
+		f.write(d)
+	
 	
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
