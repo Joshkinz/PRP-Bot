@@ -34,6 +34,10 @@ with open('characters/lord_thantus.json') as file:
 	lord_thantus = json.load(file)
 with open('characters/qlonever.json') as file:
 	qlonever = json.load(file)
+with open('characters/nintendofan.json') as file:
+	nintendofan = json.load(file)
+	
+characterlist = ['joshkinz', 'crying', 'liminori', 'swiggle', 'shadowjoe323', 'lord_thantus', 'qlonever', 'nintendofan']
 
 @bot.event
 async def on_ready():
@@ -43,13 +47,50 @@ async def on_ready():
 	print('------')
 
 @bot.command(name="attack", pass_context = True)
-async def _attack(ctx, endef, strn=1, atk=1):
+async def _attack(ctx, endef, name='a'):
 	global message
 	global partyGauge
+	global hp
+	
+	if name.lower() == "lucas":
+		name = "joshkinz"
+	if name.lower() == "wes":
+		name = "crying"
+	if name.lower() == "dorothy":
+		name = "liminori"
+	if name.lower() == "limi":
+		name = "liminori"
+	if name.lower() == "bailey":
+		name = "swiggle"
+	if name.lower() == "ash":
+		name = "shadowjoe323"
+	if name.lower() == "joe":
+		name = "shadowjoe323"
+	if name.lower() == "shadowjoe":
+		name = "shadowjoe323"
+	if name.lower() == "arlo":
+		name = "lord_thantus"
+	if name.lower() == "thantus":
+		name = "lord_thantus"
+	if name.lower() == "quentin":
+		name = "qlonever"
+	if name.lower() == "qlon":
+		name = "qlonever"
+	if name.lower() == "emily":
+		name = "nintendofan"
+	if name.lower() == "nfan":
+		name = "nintendofan"
+
+	hp = str(name)['currenthp']
+	sp = str(name)['currentsp']
 	
 	if strn == 1:
+		if ctx.message.author.name.lower() not in characterlist:
+			strn = personas[str(endef)]['strength']
 		strn = eval(ctx.message.author.name.lower())['strength']
 	if atk == 1:
+		if ctx.message.author.name.lower() not in characterlist:
+			atk = personas[str(endef)]['weaponatk']
 		atk = eval(ctx.message.author.name.lower())['weaponatk']
 	
 	#Set minimum and maximum values.
