@@ -684,6 +684,93 @@ async def _check:
 	if eval(ctx.message.author.name)['team'] == "Law Team":
 		await bot.say("Lucas: " + joshkinz['currenthp'] + " / " + joshkinz['hp'] + "\nWes: " + crying['currenthp'] + " / " + crying['hp'] + "\nDorothy: " + liminori['currenthp'] + " / " + liminori['hp'] + "\nBailey: " + swiggle['currenthp'] + " / " + swiggle['hp'])
 	if eval(ctx.message.author.name)['team'] == "Chaos Team":
-		await bot.say("Lucas: " + shadowjoe323['currenthp'] + " / " + shadowjoe323['hp'] + "\nQuentin: " + qlonever['currenthp'] + " / " + qlonever['hp'] + "\nArlo: " + lord_thantus['currenthp'] + " / " + lord_thantus['hp'] + "\nEmily: " + nintendofan['currenthp'] + " / " + nintendofan['hp'])
+		await bot.say("Ash: " + shadowjoe323['currenthp'] + " / " + shadowjoe323['hp'] + "\nQuentin: " + qlonever['currenthp'] + " / " + qlonever['hp'] + "\nArlo: " + lord_thantus['currenthp'] + " / " + lord_thantus['hp'] + "\nEmily: " + nintendofan['currenthp'] + " / " + nintendofan['hp'])
+
+@bot.command(name="persona", pass_context = True)
+async def _persona(command, number, personaname, name='a'):
+	if name.lower() == "lucas":
+		name = "joshkinz"
+	if name.lower() == "wes":
+		name = "crying"
+	if name.lower() == "dorothy":
+		name = "liminori"
+	if name.lower() == "limi":
+		name = "liminori"
+	if name.lower() == "bailey":
+		name = "swiggle"
+	if name.lower() == "ash":
+		name = "shadowjoe323"
+	if name.lower() == "joe":
+		name = "shadowjoe323"
+	if name.lower() == "shadowjoe":
+		name = "shadowjoe323"
+	if name.lower() == "arlo":
+		name = "lord_thantus"
+	if name.lower() == "thantus":
+		name = "lord_thantus"
+	if name.lower() == "quentin":
+		name = "qlonever"
+	if name.lower() == "qlon":
+		name = "qlonever"
+	if name.lower() == "emily":
+		name = "nintendofan"
+	if name.lower() == "nfan":
+		name = "nintendofan"
+	if ctx.message.author.server_permissions.administrator:
+		if number == 1:
+			data = {
+				"firstname": eval(name)['firstname'],
+				"lastname": eval(name)['lastname'],
+				"class": eval(name)['class'],
+				"persona": {
+					"persona1": {
+						"name": personas[str(personaname)]['name'],
+						"class": personas[str(personaname)]['class'],
+						"skill1": personas[str(personaname)]['skill1'],
+						"skill2": personas[str(personaname)]['skill2'],
+						"skill3": personas[str(personaname)]['skill3'],
+						"skill4": personas[str(personaname)]['skill4']
+					},
+					"persona2": {
+						"name": eval(name)['persona']['persona2']['name'],
+						"class": eval(name)['persona']['persona2']['class'],
+						"skill1": eval(name)['persona']['persona2']['skill1'],
+						"skill2": eval(name)['persona']['persona2']['skill2'],
+						"skill3": eval(name)['persona']['persona2']['skill3'],
+						"skill4": eval(name)['persona']['persona2']['skill4']
+					},
+					"persona3": {
+						"name": eval(name)['persona']['persona3']['name'],
+						"class": eval(name)['persona']['persona3']['class'],
+						"skill1": eval(name)['persona']['persona3']['skill1'],
+						"skill2": eval(name)['persona']['persona3']['skill2'],
+						"skill3": eval(name)['persona']['persona3']['skill3'],
+						"skill4": eval(name)['persona']['persona3']['skill4']
+					},
+					"persona4": {
+						"name": eval(name)['persona']['persona4']['class'],
+						"class": eval(name)['persona']['persona4']['name'],
+						"skill1": eval(name)['persona']['persona4']['skill1'],
+						"skill2": eval(name)['persona']['persona4']['skill2'],
+						"skill3": eval(name)['persona']['persona4']['skill3'],
+						"skill4": eval(name)['persona']['persona4']['skill4']
+					}
+				},
+				"boon": eval(name)['boon'],
+				"bane": eval(name)['bane'],
+				"team": eval(name)['team'],
+				"level": eval(name)['level'],
+				"xp": eval(name)['xp'],
+				"strength": eval(name)['strength'],
+				"magic": eval(name)['magic'],
+				"endurance": eval(name)['endurance'],
+				"weaponatk": eval(name)['weaponatk'],
+				"hp": eval(name)['hp'],
+				"sp": eval(name)['sp'],
+			}
+			d = json.dumps(data)
+			with open("characters/" + str(ctx.message.author.name.lower()) + ".json","w") as f:
+				f.write(d)
+		
 		
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
