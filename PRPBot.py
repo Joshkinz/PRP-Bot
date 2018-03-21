@@ -9,6 +9,7 @@ import json
 bot = Bot(command_prefix="+")
 message = "Total damage: "
 message2 = "Total damage: "
+message3 = ""
 statusmessage = ""
 partyGauge = 0
 
@@ -18,6 +19,10 @@ with open('characters.json') as file:
 	characters = json.load(file)
 with open('xp.json') as file:
 	xpcurve = json.load(file)
+with open('personas.json') as file:
+	personas = json.load(file)
+with open('personas2.json') as file:
+	personas2 = json.load(file)
 	
 with open('characters/joshkinz.json') as file:
 	joshkinz = json.load(file)
@@ -38,6 +43,8 @@ with open('characters/nintendofan.json') as file:
 	nintendofan = json.load(file)
 	
 characterlist = ['joshkinz', 'crying', 'liminori', 'swiggle', 'shadowjoe323', 'lord_thantus', 'qlonever', 'nintendofan']
+lawlist = ['joshkinz', 'crying', 'liminori', 'swiggle', 'ultramario1998']
+chaoslist = ['shadowjoe323', 'lord_thantus', 'qlonever', 'nintendofan']
 
 @bot.event
 async def on_ready():
@@ -50,7 +57,7 @@ async def on_ready():
 async def _attack(ctx, endef, name='a'):
 	global message
 	global partyGauge
-	global hp
+	global message3
 	
 	if name.lower() == "lucas":
 		name = "joshkinz"
@@ -82,8 +89,11 @@ async def _attack(ctx, endef, name='a'):
 		name = "nintendofan"
 		
 	if endef not in characterlist:
-		hp = eval(name)['currenthp']
-		sp = eval(name)['currentsp']
+		if name == 'a':
+			hp = personas[str(endef)]['currenthp']
+		if not name == 'a':	
+			hp = personas[str(endef)]['currenthp']
+			sp = personas[str(endef)]['currentsp']
 	if endef in characterlist:
 		hp = personas[str(endef)]['currenthp']
 		sp = personas[str(endef)]['currentsp']
@@ -94,9 +104,17 @@ async def _attack(ctx, endef, name='a'):
 			atk = personas[str(endef)]['weaponatk']
 			end = eval(name)['endurance']
 	if endef not in characterlist:
-		strn = eval(ctx.message.author.name.lower())['strength']
-		atk = eval(ctx.message.author.name.lower())['weaponatk']
-		end = eval(name)['endurance']
+		if not ctx.message.author.server_permissions.administrator:
+			strn = eval(ctx.message.author.name.lower())['strength']
+			atk = eval(ctx.message.author.name.lower())['weaponatk']
+		if ctx.message.author.server_permissions.administrator:
+			if not ctx.message.author.name.lower() == "joshkinz":
+				strn = eval(name.lower())['strength']
+				atk = eval(name.lower())['weaponatk']
+			if ctx.message.author.name.lower() == "joshkinz":
+				strn = eval(ctx.message.author.name.lower())['strength']
+				atk = eval(ctx.message.author.name.lower())['weaponatk']
+		end = personas[str(endef)]['endurance']
 	
 	#Set minimum and maximum values.
 	if int(strn) < 1:
@@ -109,22 +127,22 @@ async def _attack(ctx, endef, name='a'):
 	if int(atk) > 999:
 		atk = 999
 	
-	if int(endef) < 1:
-		endef = 1
-	if int(endef) > 99:
-		endef = 99
+	if int(end) < 1:
+		end = 1
+	if int(end) > 99:
+		end = 99
 		
 	#Change the variables to floats.
 	strn = float(strn)
 	atk = float(atk)
-	endef = float(endef)
+	end = float(end)
 	
 	#Roll for random modifiers.
 	roll = random.uniform(.94, 1.06)
 	critroll = random.randrange(0, 25)
 	
 	#Damage formula.
-	damage = (5.0 * sqrt((strn * atk)) / ((sqrt(endef) / 2.0))) * roll
+	damage = (5.0 * sqrt((strn * atk)) / ((sqrt(end) / 2.0))) * roll
 	
 	#Change the damage to an integer.
 	damage = int(damage)
@@ -153,13 +171,35 @@ async def _attack(ctx, endef, name='a'):
 		damage = damage * damagemod
 		
 	#Set party gauge increase.
-	partyGauge = partyGauge + (damage / 250)
-	if partyGauge > 100:
-		partyGauge = 100
+	if endef not in characterlist:
+		partyGauge = partyGauge + (damage / 250)
+		if partyGauge > 100:
+			partyGauge = 100
+		
+	if endef in characterlist:
+		eval(name)['currenthp'] = eval(name)['currenthp'] - damage
+		if eval(name)['currenthp'] < 0:
+			eval(name)['currenthp'] = 0
+			message3 = str(eval(name)['firstname']) + " has fallen!"
+			
+	if endef not in characterlist:
+		personas[str(endef)]['currenthp'] = personas[str(endef)]['currenthp'] - damage
+		if personas[str(endef)]['currenthp'] < 0:
+			personas[str(endef)]['currenthp'] = 0
+			if endef not in characterlist:
+				if ctx.message.author.name.lower() in characterlist:
+					message3 = personas[str(endef)]['name'] + " has fallen!"
+				else:
+					message3 = str(personas[str(endef)]['name']) + " has fallen!"
+			if endef in characterlist:
+				message3 = str(eval(endef))['firstname'] + " has fallen!"
+			personas[str(endef)]['currenthp'] = personas2[str(endef)]['hp']
+	
 		
 	#Tell bot to post damage.
-	await bot.say(message + str(int(damage)) +"\nParty gauge: " + str(int(partyGauge)) + "%!")
+	await bot.say(message + str(int(damage)) +"\nParty gauge: " + str(int(partyGauge)) + "%!\n" + message3)
 	message = "Total damage: "
+	message3 = ""
 	
 	#Print a confirmation message in the console.
 	print("Attack confirmed. " + str(critroll))
@@ -639,5 +679,5 @@ async def _weapon(ctx, value):
 	with open("characters/" + str(ctx.message.author.name.lower()) + ".json","w") as f:
 		f.write(d)
 	
-	
+@bot.command	
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
