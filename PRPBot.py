@@ -208,8 +208,66 @@ async def _attack(ctx, endef, name='a'):
 async def _skill(ctx, name, endef, strn=1, atk=1):
 	global message
 	global message2
+	global message3
 	global statusmessage
 	global partyGauge
+	
+	if name.lower() == "lucas":
+		name = "joshkinz"
+	if name.lower() == "wes":
+		name = "crying"
+	if name.lower() == "dorothy":
+		name = "liminori"
+	if name.lower() == "limi":
+		name = "liminori"
+	if name.lower() == "bailey":
+		name = "swiggle"
+	if name.lower() == "ash":
+		name = "shadowjoe323"
+	if name.lower() == "joe":
+		name = "shadowjoe323"
+	if name.lower() == "shadowjoe":
+		name = "shadowjoe323"
+	if name.lower() == "arlo":
+		name = "lord_thantus"
+	if name.lower() == "thantus":
+		name = "lord_thantus"
+	if name.lower() == "quentin":
+		name = "qlonever"
+	if name.lower() == "qlon":
+		name = "qlonever"
+	if name.lower() == "emily":
+		name = "nintendofan"
+	if name.lower() == "nfan":
+		name = "nintendofan"
+		
+	if endef not in characterlist:
+		if name == 'a':
+			hp = personas[str(endef)]['currenthp']
+		if not name == 'a':	
+			hp = personas[str(endef)]['currenthp']
+			sp = personas[str(endef)]['currentsp']
+	if endef in characterlist:
+		hp = personas[str(endef)]['currenthp']
+		sp = personas[str(endef)]['currentsp']
+	
+	if endef in characterlist:
+		if ctx.message.author.name.lower() not in characterlist:
+			strn = personas[str(endef)]['strength']
+			atk = personas[str(endef)]['weaponatk']
+			end = eval(name)['endurance']
+	if endef not in characterlist:
+		if not ctx.message.author.server_permissions.administrator:
+			strn = eval(ctx.message.author.name.lower())['strength']
+			atk = eval(ctx.message.author.name.lower())['weaponatk']
+		if ctx.message.author.server_permissions.administrator:
+			if not ctx.message.author.name.lower() == "joshkinz":
+				strn = eval(name.lower())['strength']
+				atk = eval(name.lower())['weaponatk']
+			if ctx.message.author.name.lower() == "joshkinz":
+				strn = eval(ctx.message.author.name.lower())['strength']
+				atk = eval(ctx.message.author.name.lower())['weaponatk']
+		end = personas[str(endef)]['endurance']
 	
 	if strn == 1:
 		strn = eval(ctx.message.author.name.lower())['strength']
@@ -288,13 +346,33 @@ async def _skill(ctx, name, endef, strn=1, atk=1):
 		if partyGauge > 100:
 			partyGauge = 100
 			
+		if endef in characterlist:
+		eval(name)['currenthp'] = eval(name)['currenthp'] - damage
+		if eval(name)['currenthp'] < 0:
+			eval(name)['currenthp'] = 0
+			message3 = str(eval(name)['firstname']) + " has fallen!"
+			
+		if endef not in characterlist:
+			personas[str(endef)]['currenthp'] = personas[str(endef)]['currenthp'] - damage
+			if personas[str(endef)]['currenthp'] < 0:
+				personas[str(endef)]['currenthp'] = 0
+				if endef not in characterlist:
+					if ctx.message.author.name.lower() in characterlist:
+						message3 = personas[str(endef)]['name'] + " has fallen!"
+					else:
+						message3 = str(personas[str(endef)]['name']) + " has fallen!"
+				if endef in characterlist:
+					message3 = str(eval(endef))['firstname'] + " has fallen!"
+				personas[str(endef)]['currenthp'] = personas2[str(endef)]['hp']
+			
 		if statusroll == 1:
 			statusmessage = skills[str(name)]['status']
 		
 		if skills[str(name)]['hits'] == 2:
-			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + ".\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+			await bot.say("Hit 1: " + message + str(int(damage)) + ".\nHit 2: " + message2 + str(int(damage2)) + ".\n" + message + str(int(damage + damage2)) + ".\nDeduct " + str(skills[str(name)]['cost']) + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!" + "\n" + message3)
+			message3 = ""
 		else:
-			await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + ". " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!")
+			await bot.say(message + str(int(damage)) + ".\nDeduct " + str(skills[str(name)]['cost']) + ". " + statusmessage + "\nParty gauge: " + str(int(partyGauge)) + "%!" + "\n" + message)
 		message = "Total damage: "
 		message2 = "Total damage: "
 		statusmessage = ""
@@ -717,60 +795,447 @@ async def _persona(command, number, personaname, name='a'):
 	if name.lower() == "nfan":
 		name = "nintendofan"
 	if ctx.message.author.server_permissions.administrator:
-		if number == 1:
-			data = {
-				"firstname": eval(name)['firstname'],
-				"lastname": eval(name)['lastname'],
-				"class": eval(name)['class'],
-				"persona": {
-					"persona1": {
-						"name": personas[str(personaname)]['name'],
-						"class": personas[str(personaname)]['class'],
-						"skill1": personas[str(personaname)]['skill1'],
-						"skill2": personas[str(personaname)]['skill2'],
-						"skill3": personas[str(personaname)]['skill3'],
-						"skill4": personas[str(personaname)]['skill4']
+		if command == "add":
+			if number == 1:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": personas[str(personaname)]['name'],
+							"class": personas[str(personaname)]['class'],
+							"skill1": personas[str(personaname)]['skill1'],
+							"skill2": personas[str(personaname)]['skill2'],
+							"skill3": personas[str(personaname)]['skill3'],
+							"skill4": personas[str(personaname)]['skill4']
+						},
+						"persona2": {
+							"name": eval(name)['persona']['persona2']['name'],
+							"class": eval(name)['persona']['persona2']['class'],
+							"skill1": eval(name)['persona']['persona2']['skill1'],
+							"skill2": eval(name)['persona']['persona2']['skill2'],
+							"skill3": eval(name)['persona']['persona2']['skill3'],
+							"skill4": eval(name)['persona']['persona2']['skill4']
+						},
+						"persona3": {
+							"name": eval(name)['persona']['persona3']['name'],
+							"class": eval(name)['persona']['persona3']['class'],
+							"skill1": eval(name)['persona']['persona3']['skill1'],
+							"skill2": eval(name)['persona']['persona3']['skill2'],
+							"skill3": eval(name)['persona']['persona3']['skill3'],
+							"skill4": eval(name)['persona']['persona3']['skill4']
+						},
+						"persona4": {
+							"name": eval(name)['persona']['persona4']['class'],
+							"class": eval(name)['persona']['persona4']['name'],
+							"skill1": eval(name)['persona']['persona4']['skill1'],
+							"skill2": eval(name)['persona']['persona4']['skill2'],
+							"skill3": eval(name)['persona']['persona4']['skill3'],
+							"skill4": eval(name)['persona']['persona4']['skill4']
+						}
 					},
-					"persona2": {
-						"name": eval(name)['persona']['persona2']['name'],
-						"class": eval(name)['persona']['persona2']['class'],
-						"skill1": eval(name)['persona']['persona2']['skill1'],
-						"skill2": eval(name)['persona']['persona2']['skill2'],
-						"skill3": eval(name)['persona']['persona2']['skill3'],
-						"skill4": eval(name)['persona']['persona2']['skill4']
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+					
+			if number == 2:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": eval(name)['persona']['persona1']['name'],
+							"class": eval(name)['persona']['persona1']['class'],
+							"skill1": eval(name)['persona']['persona1']['skill1'],
+							"skill2": eval(name)['persona']['persona1']['skill2'],
+							"skill3": eval(name)['persona']['persona1']['skill3'],
+							"skill4": eval(name)['persona']['persona1']['skill4']
+						},
+						"persona2": {
+							"name": personas[str(personaname)]['name'],
+							"class": personas[str(personaname)]['class'],
+							"skill1": personas[str(personaname)]['skill1'],
+							"skill2": personas[str(personaname)]['skill2'],
+							"skill3": personas[str(personaname)]['skill3'],
+							"skill4": personas[str(personaname)]['skill4']
+						},
+						"persona3": {
+							"name": eval(name)['persona']['persona3']['name'],
+							"class": eval(name)['persona']['persona3']['class'],
+							"skill1": eval(name)['persona']['persona3']['skill1'],
+							"skill2": eval(name)['persona']['persona3']['skill2'],
+							"skill3": eval(name)['persona']['persona3']['skill3'],
+							"skill4": eval(name)['persona']['persona3']['skill4']
+						},
+						"persona4": {
+							"name": eval(name)['persona']['persona4']['class'],
+							"class": eval(name)['persona']['persona4']['name'],
+							"skill1": eval(name)['persona']['persona4']['skill1'],
+							"skill2": eval(name)['persona']['persona4']['skill2'],
+							"skill3": eval(name)['persona']['persona4']['skill3'],
+							"skill4": eval(name)['persona']['persona4']['skill4']
+						}
 					},
-					"persona3": {
-						"name": eval(name)['persona']['persona3']['name'],
-						"class": eval(name)['persona']['persona3']['class'],
-						"skill1": eval(name)['persona']['persona3']['skill1'],
-						"skill2": eval(name)['persona']['persona3']['skill2'],
-						"skill3": eval(name)['persona']['persona3']['skill3'],
-						"skill4": eval(name)['persona']['persona3']['skill4']
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+					
+			if number == 3:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": eval(name)['persona']['persona1']['name'],
+							"class": eval(name)['persona']['persona1']['class'],
+							"skill1": eval(name)['persona']['persona1']['skill1'],
+							"skill2": eval(name)['persona']['persona1']['skill2'],
+							"skill3": eval(name)['persona']['persona1']['skill3'],
+							"skill4": eval(name)['persona']['persona1']['skill4']
+						},
+						"persona2": {
+							"name": eval(name)['persona']['persona2']['name'],
+							"class": eval(name)['persona']['persona2']['class'],
+							"skill1": eval(name)['persona']['persona2']['skill1'],
+							"skill2": eval(name)['persona']['persona2']['skill2'],
+							"skill3": eval(name)['persona']['persona2']['skill3'],
+							"skill4": eval(name)['persona']['persona2']['skill4']
+						},
+						"persona3": {
+							"name": personas[str(personaname)]['name'],
+							"class": personas[str(personaname)]['class'],
+							"skill1": personas[str(personaname)]['skill1'],
+							"skill2": personas[str(personaname)]['skill2'],
+							"skill3": personas[str(personaname)]['skill3'],
+							"skill4": personas[str(personaname)]['skill4']
+						},
+						"persona4": {
+							"name": eval(name)['persona']['persona4']['class'],
+							"class": eval(name)['persona']['persona4']['name'],
+							"skill1": eval(name)['persona']['persona4']['skill1'],
+							"skill2": eval(name)['persona']['persona4']['skill2'],
+							"skill3": eval(name)['persona']['persona4']['skill3'],
+							"skill4": eval(name)['persona']['persona4']['skill4']
+						}
 					},
-					"persona4": {
-						"name": eval(name)['persona']['persona4']['class'],
-						"class": eval(name)['persona']['persona4']['name'],
-						"skill1": eval(name)['persona']['persona4']['skill1'],
-						"skill2": eval(name)['persona']['persona4']['skill2'],
-						"skill3": eval(name)['persona']['persona4']['skill3'],
-						"skill4": eval(name)['persona']['persona4']['skill4']
-					}
-				},
-				"boon": eval(name)['boon'],
-				"bane": eval(name)['bane'],
-				"team": eval(name)['team'],
-				"level": eval(name)['level'],
-				"xp": eval(name)['xp'],
-				"strength": eval(name)['strength'],
-				"magic": eval(name)['magic'],
-				"endurance": eval(name)['endurance'],
-				"weaponatk": eval(name)['weaponatk'],
-				"hp": eval(name)['hp'],
-				"sp": eval(name)['sp'],
-			}
-			d = json.dumps(data)
-			with open("characters/" + str(ctx.message.author.name.lower()) + ".json","w") as f:
-				f.write(d)
-		
-		
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+			
+			if number == 3:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": eval(name)['persona']['persona1']['name'],
+							"class": eval(name)['persona']['persona1']['class'],
+							"skill1": eval(name)['persona']['persona1']['skill1'],
+							"skill2": eval(name)['persona']['persona1']['skill2'],
+							"skill3": eval(name)['persona']['persona1']['skill3'],
+							"skill4": eval(name)['persona']['persona1']['skill4']
+						},
+						"persona2": {
+							"name": eval(name)['persona']['persona2']['name'],
+							"class": eval(name)['persona']['persona2']['class'],
+							"skill1": eval(name)['persona']['persona2']['skill1'],
+							"skill2": eval(name)['persona']['persona2']['skill2'],
+							"skill3": eval(name)['persona']['persona2']['skill3'],
+							"skill4": eval(name)['persona']['persona2']['skill4']
+						},
+						"persona3": {
+							"name": eval(name)['persona']['persona3']['name'],
+							"class": eval(name)['persona']['persona3']['class'],
+							"skill1": eval(name)['persona']['persona3']['skill1'],
+							"skill2": eval(name)['persona']['persona3']['skill2'],
+							"skill3": eval(name)['persona']['persona3']['skill3'],
+							"skill4": eval(name)['persona']['persona3']['skill4']
+						},
+						"persona4": {
+							"name": personas[str(personaname)]['name'],
+							"class": personas[str(personaname)]['class'],
+							"skill1": personas[str(personaname)]['skill1'],
+							"skill2": personas[str(personaname)]['skill2'],
+							"skill3": personas[str(personaname)]['skill3'],
+							"skill4": personas[str(personaname)]['skill4']
+						}
+					},
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+				
+		if command == "remove":
+			name = personaname
+			if number == 1:
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": "n/a",
+							"class": "n/a",
+							"skill1": "n/a",
+							"skill2": "n/a",
+							"skill3": "n/a",
+							"skill4": "n/a"
+						},
+						"persona2": {
+							"name": eval(name)['persona']['persona2']['name'],
+							"class": eval(name)['persona']['persona2']['class'],
+							"skill1": eval(name)['persona']['persona2']['skill1'],
+							"skill2": eval(name)['persona']['persona2']['skill2'],
+							"skill3": eval(name)['persona']['persona2']['skill3'],
+							"skill4": eval(name)['persona']['persona2']['skill4']
+						},
+						"persona3": {
+							"name": eval(name)['persona']['persona3']['name'],
+							"class": eval(name)['persona']['persona3']['class'],
+							"skill1": eval(name)['persona']['persona3']['skill1'],
+							"skill2": eval(name)['persona']['persona3']['skill2'],
+							"skill3": eval(name)['persona']['persona3']['skill3'],
+							"skill4": eval(name)['persona']['persona3']['skill4']
+						},
+						"persona4": {
+							"name": eval(name)['persona']['persona4']['class'],
+							"class": eval(name)['persona']['persona4']['name'],
+							"skill1": eval(name)['persona']['persona4']['skill1'],
+							"skill2": eval(name)['persona']['persona4']['skill2'],
+							"skill3": eval(name)['persona']['persona4']['skill3'],
+							"skill4": eval(name)['persona']['persona4']['skill4']
+						}
+					},
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+					
+			if number == 2:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": eval(name)['persona']['persona1']['name'],
+							"class": eval(name)['persona']['persona1']['class'],
+							"skill1": eval(name)['persona']['persona1']['skill1'],
+							"skill2": eval(name)['persona']['persona1']['skill2'],
+							"skill3": eval(name)['persona']['persona1']['skill3'],
+							"skill4": eval(name)['persona']['persona1']['skill4']
+						},
+						"persona2": {
+							"name": "n/a",
+							"class": "n/a",
+							"skill1": "n/a",
+							"skill2": "n/a",
+							"skill3": "n/a",
+							"skill4": "n/a"
+						},
+						"persona3": {
+							"name": eval(name)['persona']['persona3']['name'],
+							"class": eval(name)['persona']['persona3']['class'],
+							"skill1": eval(name)['persona']['persona3']['skill1'],
+							"skill2": eval(name)['persona']['persona3']['skill2'],
+							"skill3": eval(name)['persona']['persona3']['skill3'],
+							"skill4": eval(name)['persona']['persona3']['skill4']
+						},
+						"persona4": {
+							"name": eval(name)['persona']['persona4']['class'],
+							"class": eval(name)['persona']['persona4']['name'],
+							"skill1": eval(name)['persona']['persona4']['skill1'],
+							"skill2": eval(name)['persona']['persona4']['skill2'],
+							"skill3": eval(name)['persona']['persona4']['skill3'],
+							"skill4": eval(name)['persona']['persona4']['skill4']
+						}
+					},
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+					
+			if number == 3:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": eval(name)['persona']['persona1']['name'],
+							"class": eval(name)['persona']['persona1']['class'],
+							"skill1": eval(name)['persona']['persona1']['skill1'],
+							"skill2": eval(name)['persona']['persona1']['skill2'],
+							"skill3": eval(name)['persona']['persona1']['skill3'],
+							"skill4": eval(name)['persona']['persona1']['skill4']
+						},
+						"persona2": {
+							"name": eval(name)['persona']['persona2']['name'],
+							"class": eval(name)['persona']['persona2']['class'],
+							"skill1": eval(name)['persona']['persona2']['skill1'],
+							"skill2": eval(name)['persona']['persona2']['skill2'],
+							"skill3": eval(name)['persona']['persona2']['skill3'],
+							"skill4": eval(name)['persona']['persona2']['skill4']
+						},
+						"persona3": {
+							"name": "n/a",
+							"class": "n/a",
+							"skill1": "n/a",
+							"skill2": "n/a",
+							"skill3": "n/a",
+							"skill4": "n/a"
+						},
+						"persona4": {
+							"name": eval(name)['persona']['persona4']['class'],
+							"class": eval(name)['persona']['persona4']['name'],
+							"skill1": eval(name)['persona']['persona4']['skill1'],
+							"skill2": eval(name)['persona']['persona4']['skill2'],
+							"skill3": eval(name)['persona']['persona4']['skill3'],
+							"skill4": eval(name)['persona']['persona4']['skill4']
+						}
+					},
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+			
+			if number == 3:
+				data = {
+					"firstname": eval(name)['firstname'],
+					"lastname": eval(name)['lastname'],
+					"class": eval(name)['class'],
+					"persona": {
+						"persona1": {
+							"name": eval(name)['persona']['persona1']['name'],
+							"class": eval(name)['persona']['persona1']['class'],
+							"skill1": eval(name)['persona']['persona1']['skill1'],
+							"skill2": eval(name)['persona']['persona1']['skill2'],
+							"skill3": eval(name)['persona']['persona1']['skill3'],
+							"skill4": eval(name)['persona']['persona1']['skill4']
+						},
+						"persona2": {
+							"name": eval(name)['persona']['persona2']['name'],
+							"class": eval(name)['persona']['persona2']['class'],
+							"skill1": eval(name)['persona']['persona2']['skill1'],
+							"skill2": eval(name)['persona']['persona2']['skill2'],
+							"skill3": eval(name)['persona']['persona2']['skill3'],
+							"skill4": eval(name)['persona']['persona2']['skill4']
+						},
+						"persona3": {
+							"name": eval(name)['persona']['persona3']['name'],
+							"class": eval(name)['persona']['persona3']['class'],
+							"skill1": eval(name)['persona']['persona3']['skill1'],
+							"skill2": eval(name)['persona']['persona3']['skill2'],
+							"skill3": eval(name)['persona']['persona3']['skill3'],
+							"skill4": eval(name)['persona']['persona3']['skill4']
+						},
+						"persona4": {
+							"name": "n/a",
+							"class": "n/a",
+							"skill1": "n/a",
+							"skill2": "n/a",
+							"skill3": "n/a",
+							"skill4": "n/a"
+						}
+					},
+					"boon": eval(name)['boon'],
+					"bane": eval(name)['bane'],
+					"team": eval(name)['team'],
+					"level": eval(name)['level'],
+					"xp": eval(name)['xp'],
+					"strength": eval(name)['strength'],
+					"magic": eval(name)['magic'],
+					"endurance": eval(name)['endurance'],
+					"weaponatk": eval(name)['weaponatk'],
+					"hp": eval(name)['hp'],
+					"sp": eval(name)['sp'],
+				}
+				d = json.dumps(data)
+				with open("characters/" + str(name) + ".json","w") as f:
+					f.write(d)
+				
+					
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
