@@ -679,5 +679,11 @@ async def _weapon(ctx, value):
 	with open("characters/" + str(ctx.message.author.name.lower()) + ".json","w") as f:
 		f.write(d)
 	
-@bot.command	
+@bot.command(name="check", pass_context = True)
+async def _check:
+	if eval(ctx.message.author.name)['team'] == "Law Team":
+		await bot.say("Lucas: " + joshkinz['currenthp'] + " / " + joshkinz['hp'] + "\nWes: " + crying['currenthp'] + " / " + crying['hp'] + "\nDorothy: " + liminori['currenthp'] + " / " + liminori['hp'] + "\nBailey: " + swiggle['currenthp'] + " / " + swiggle['hp'])
+	if eval(ctx.message.author.name)['team'] == "Chaos Team":
+		await bot.say("Lucas: " + shadowjoe323['currenthp'] + " / " + shadowjoe323['hp'] + "\nQuentin: " + qlonever['currenthp'] + " / " + qlonever['hp'] + "\nArlo: " + lord_thantus['currenthp'] + " / " + lord_thantus['hp'] + "\nEmily: " + nintendofan['currenthp'] + " / " + nintendofan['hp'])
+		
 bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
