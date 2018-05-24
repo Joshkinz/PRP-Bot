@@ -1398,4 +1398,4 @@ async def _restore(ctx, team):
 			qlonever['currentsp'] = qlonever['sp']
 		await bot.say("Restored!")
 	
-bot.run('MzExOTY4Mzk2NjA0MzQyMjc0.DYirBA.P7vOs_Vyfhz9PRSvnQzIXS957Rk')
+bot.run('-no lol-')
